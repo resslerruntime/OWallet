@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'wif' {
+declare module "wif" {
   declare module.exports: any;
 }
 
@@ -22,17 +22,17 @@ declare module 'wif' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'wif/test/index' {
+declare module "wif/test/index" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'wif/index' {
-  declare module.exports: $Exports<'wif'>;
+declare module "wif/index" {
+  declare module.exports: $Exports<"wif">;
 }
-declare module 'wif/index.js' {
-  declare module.exports: $Exports<'wif'>;
+declare module "wif/index.js" {
+  declare module.exports: $Exports<"wif">;
 }
-declare module 'wif/test/index.js' {
-  declare module.exports: $Exports<'wif/test/index'>;
+declare module "wif/test/index.js" {
+  declare module.exports: $Exports<"wif/test/index">;
 }

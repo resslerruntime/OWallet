@@ -56,99 +56,107 @@
 </template>
 
 <script>
-import { GAS_LIMIT, GAS_PRICE,TEST_NET, MAIN_NET } from '../../core/consts'
-import { OntAssetTxBuilder, Crypto, RestClient } from 'ontology-ts-sdk'
+import { GAS_LIMIT, GAS_PRICE, TEST_NET, MAIN_NET } from "../../core/consts";
+import { OntAssetTxBuilder, Crypto, RestClient } from "ontology-ts-sdk";
 
 export default {
-    name: 'CreateMultiSignTx',
-    data() {
-        return {
-            from: '',
-            to: '',
-            gasPrice:GAS_PRICE,
-            gasLimit: GAS_LIMIT,
-            amount: '',
-            multiSignTx: '',
-            ont: 0,
-            ong: 0,
-            asset: 'ONT'
-        }
-    },
-    methods: {
-        refreshBalance() {
-            if(!this.from || this.from.length !== 34) {
-                return;
-            }
-            let url = ''
-            const net = localStorage.getItem('net');
-            if (net === 'TEST_NET') {
-                url = TEST_NET + ':20334'
-            } else {
-                url = MAIN_NET + ':20334'
-            }
-
-            const restClient = new RestClient(url);
-            const from = new Crypto.Address(this.from);
-            restClient.getBalance(from).then(res => {
-            this.ont = res.Result.ont
-            this.ong = parseFloat(res.Result.ong/1e9).toFixed(9);
-            })
-        },
-        toSign() {
-          this.$router.push({name:'SignMultiAddrTx'})
-        },
-        back() {
-            this.$router.push({name: 'Wallets'})
-        },
-      createTx() {
-          const from = new Crypto.Address(this.from);
-          const to = new Crypto.Address(this.to);
-          let amount = this.amount;
-          if (this.asset === 'ONG') {
-              amount *= 1e9;
-          }
-          const tx = OntAssetTxBuilder.makeTransferTx(this.asset, from, to, amount, this.gasPrice, this.gasLimit, from);
-          const multiSignTx = tx.serialize();
-          this.multiSignTx = multiSignTx;
+  name: "CreateMultiSignTx",
+  data() {
+    return {
+      from: "",
+      to: "",
+      gasPrice: GAS_PRICE,
+      gasLimit: GAS_LIMIT,
+      amount: "",
+      multiSignTx: "",
+      ont: 0,
+      ong: 0,
+      asset: "ONT"
+    };
+  },
+  methods: {
+    refreshBalance() {
+      if (!this.from || this.from.length !== 34) {
+        return;
       }
+      let url = "";
+      const net = localStorage.getItem("net");
+      if (net === "TEST_NET") {
+        url = TEST_NET + ":20334";
+      } else {
+        url = MAIN_NET + ":20334";
+      }
+
+      const restClient = new RestClient(url);
+      const from = new Crypto.Address(this.from);
+      restClient.getBalance(from).then(res => {
+        this.ont = res.Result.ont;
+        this.ong = parseFloat(res.Result.ong / 1e9).toFixed(9);
+      });
+    },
+    toSign() {
+      this.$router.push({ name: "SignMultiAddrTx" });
+    },
+    back() {
+      this.$router.push({ name: "Wallets" });
+    },
+    createTx() {
+      const from = new Crypto.Address(this.from);
+      const to = new Crypto.Address(this.to);
+      let amount = this.amount;
+      if (this.asset === "ONG") {
+        amount *= 1e9;
+      }
+      const tx = OntAssetTxBuilder.makeTransferTx(
+        this.asset,
+        from,
+        to,
+        amount,
+        this.gasPrice,
+        this.gasLimit,
+        from
+      );
+      const multiSignTx = tx.serialize();
+      this.multiSignTx = multiSignTx;
     }
-}
+  }
+};
 </script>
 
 <style>
 .formContainer {
-    width: 50%;
-    padding:15px;
-    float:left;
+  width: 50%;
+  padding: 15px;
+  float: left;
 }
 
 .createSuccess {
-    float:left;
-    border: 1px solid #dddddd;
-    width: 40%;
-    margin:15px;
-    padding:15px;
+  float: left;
+  border: 1px solid #dddddd;
+  width: 40%;
+  margin: 15px;
+  padding: 15px;
 }
 .successText {
-    color: green;
-    font-size: 20px;
+  color: green;
+  font-size: 20px;
 }
 .successTx {
-    width:100%;
+  width: 100%;
 }
 .fromContainer {
-    border: 1px solid #35bfdf;
-    padding:10px;
-    margin-bottom: 10px;
+  border: 1px solid #35bfdf;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .selectContainer {
-    position: relative;
+  position: relative;
 }
 .selectAsset {
-    width:100px;
-    position: absolute;
-    right: 0;
-    top: 0px;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 0px;
 }
 </style>

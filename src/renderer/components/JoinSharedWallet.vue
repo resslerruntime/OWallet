@@ -77,104 +77,112 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {ONT_PASS_NODE,ONT_PASS_NODE_PRD, ONT_PASS_URL, DEFAULT_SCRYPT} from '../../core/consts'
-import dbService from '../../core/dbService'
-import {Crypto} from 'ontology-ts-sdk'
-import $ from 'jquery'
+import axios from "axios";
+import {
+  ONT_PASS_NODE,
+  ONT_PASS_NODE_PRD,
+  ONT_PASS_URL,
+  DEFAULT_SCRYPT
+} from "../../core/consts";
+import dbService from "../../core/dbService";
+import { Crypto } from "ontology-ts-sdk";
+import $ from "jquery";
 export default {
-    name: 'JoinSharedWallet',
-    data () {
-        return {
-            sharedWalletAddress: '',
-            sharedWalletName: '',
-            sharedWallet: null,
-            noSuchWallet: false,
-            showJoinBtn: false,
-            accountToJoin: {
-                address: ''
-            },
-            password:''
-        }
+  name: "JoinSharedWallet",
+  data() {
+    return {
+      sharedWalletAddress: "",
+      sharedWalletName: "",
+      sharedWallet: null,
+      noSuchWallet: false,
+      showJoinBtn: false,
+      accountToJoin: {
+        address: ""
+      },
+      password: ""
+    };
+  },
+  methods: {
+    querySharedWallet() {
+      const net = localStorage.getItem("net");
+      const ontPassNode =
+        net === "TEST_NET" ? ONT_PASS_NODE : ONT_PASS_NODE_PRD;
+      axios
+        .get(ontPassNode + ONT_PASS_URL.QuerySharedWallet, {
+          params: {
+            sharedWalletAddress: this.sharedWalletAddress
+          }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            this.sharedWallet = res.data;
+            this.decideShowJoin();
+            this.noSuchWallet = false;
+          } else {
+            this.noSuchWallet = true;
+          }
+        })
+        .catch(err => {
+          this.noSuchWallet = true;
+        });
     },
-    methods: {
-        querySharedWallet() {
-            const net = localStorage.getItem('net')
-            const ontPassNode = net === 'TEST_NET' ? ONT_PASS_NODE : ONT_PASS_NODE_PRD
-            axios.get(ontPassNode+ONT_PASS_URL.QuerySharedWallet, {
-                params: {
-                    sharedWalletAddress: this.sharedWalletAddress
-                }
-            }).then(res => {
-                if(res.status === 200) {
-                    this.sharedWallet = res.data
-                    this.decideShowJoin()
-                    this.noSuchWallet = false;
-                } else {
-                    this.noSuchWallet = true;
-                }
-            }).catch(err => {
-                this.noSuchWallet = true;
-            })
-        },
-        decideShowJoin() {
-            if (this.sharedWallet) {
-                var that = this;
-                const coPayers = this.sharedWallet.coPayers;
-                dbService.wallet.find({}, function (err, accounts) {
-                    if (err) {
-                        console.log(err)
-                        return;
-                    }
-                    for (let cp of coPayers) {
-                        for (let ac of accounts) {
-                            if (cp.address === ac.address) {
-                                that.showJoinBtn = true;
-                                that.accountToJoin = ac;
-                                return;
-                            }
-                        }
-                    }
-                })
-            }
-            this.showJoinBtn = false;
-            this.accountToJoin = null;
-        },
-        back() {
-            this.$router.push({name: 'Wallets'})
-        },
-        decryptToJoin() {
-            $('#decryptPassword').modal('show')
-        },
-        decryptPass() {
-            const enc = new Crypto.PrivateKey(this.accountToJoin.key);
-            const address = new Crypto.Address(this.accountToJoin.address);
-            const salt = this.accountToJoin.salt;
-            try {
-                enc.decrypt(this.password, address, salt, DEFAULT_SCRYPT);
-            }catch(err) {
-                alert('You password is incorrect.')
+    decideShowJoin() {
+      if (this.sharedWallet) {
+        var that = this;
+        const coPayers = this.sharedWallet.coPayers;
+        dbService.wallet.find({}, function(err, accounts) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          for (let cp of coPayers) {
+            for (let ac of accounts) {
+              if (cp.address === ac.address) {
+                that.showJoinBtn = true;
+                that.accountToJoin = ac;
                 return;
+              }
             }
-            alert('Join success!')
-            //TODO： Jump to account state page
-        }
+          }
+        });
+      }
+      this.showJoinBtn = false;
+      this.accountToJoin = null;
+    },
+    back() {
+      this.$router.push({ name: "Wallets" });
+    },
+    decryptToJoin() {
+      $("#decryptPassword").modal("show");
+    },
+    decryptPass() {
+      const enc = new Crypto.PrivateKey(this.accountToJoin.key);
+      const address = new Crypto.Address(this.accountToJoin.address);
+      const salt = this.accountToJoin.salt;
+      try {
+        enc.decrypt(this.password, address, salt, DEFAULT_SCRYPT);
+      } catch (err) {
+        alert("You password is incorrect.");
+        return;
+      }
+      alert("Join success!");
+      //TODO： Jump to account state page
     }
-}
+  }
+};
 </script>
 
 <style>
 .boxOuter {
-    padding: 15px;
-    width:60%;
+  padding: 15px;
+  width: 60%;
 }
 .box1 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .copayerItem {
-
 }
 .copayerItem p {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 </style>

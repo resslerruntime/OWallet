@@ -1,15 +1,14 @@
 <style scoped>
 .send-container {
-        width:600px;
-        margin:0 auto;
-        padding-bottom:5.3rem;
-        /*overflow: scroll;*/
-    }
-    .steps {
-        height:68px;
-        padding:0 4rem;
-
-    }
+  width: 600px;
+  margin: 0 auto;
+  padding-bottom: 5.3rem;
+  /*overflow: scroll;*/
+}
+.steps {
+  height: 68px;
+  padding: 0 4rem;
+}
 </style>
 <template>
     <div>
@@ -39,41 +38,40 @@
 </template>
 
 <script>
-import Breadcrumb from '../Breadcrumb'
-import SendAsset from '../SharedWallet/Transfer/SendAsset'
-import SendConfirm from '../CommonWallet/SendConfirm'
+import Breadcrumb from "../Breadcrumb";
+import SendAsset from "../SharedWallet/Transfer/SendAsset";
+import SendConfirm from "../CommonWallet/SendConfirm";
 export default {
-    name:'CommonSendHome',
-    components:{
-        Breadcrumb,
-        SendAsset,
-        SendConfirm
+  name: "CommonSendHome",
+  components: {
+    Breadcrumb,
+    SendAsset,
+    SendConfirm
+  },
+  data() {
+    const currentWallet = JSON.parse(sessionStorage.getItem("currentWallet"));
+    return {
+      walletName: currentWallet.label,
+      routes: [{ name: currentWallet.label, path: "/dashboard" }],
+      current: 0
+    };
+  },
+  methods: {
+    backToWallets() {
+      this.$router.push({ name: "Wallets" });
     },
-    data() {
-        const currentWallet = JSON.parse(sessionStorage.getItem('currentWallet'))
-        return {
-            walletName:currentWallet.label,
-            routes:[{name: currentWallet.label, path:'/dashboard'}],
-            current:0
-        }
+    handleCancel() {
+      this.$router.go(-1);
     },
-    methods:{
-        backToWallets() {
-            this.$router.push({name:'Wallets'})
-        },
-        handleCancel() {
-            this.$router.go(-1);
-        },
-        handleSendAssetNext() {
-            this.current = 1;
-        },
-        handleConfirmBack() {
-            this.current = 0;
-        },
-        handleSubmit() {
-            this.$router.go(-1);
-        }
-
+    handleSendAssetNext() {
+      this.current = 1;
+    },
+    handleConfirmBack() {
+      this.current = 0;
+    },
+    handleSubmit() {
+      this.$router.go(-1);
     }
-}
+  }
+};
 </script>

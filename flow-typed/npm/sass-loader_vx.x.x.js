@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'sass-loader' {
+declare module "sass-loader" {
   declare module.exports: any;
 }
 
@@ -22,46 +22,46 @@ declare module 'sass-loader' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'sass-loader/lib/formatSassError' {
+declare module "sass-loader/lib/formatSassError" {
   declare module.exports: any;
 }
 
-declare module 'sass-loader/lib/importsToResolve' {
+declare module "sass-loader/lib/importsToResolve" {
   declare module.exports: any;
 }
 
-declare module 'sass-loader/lib/loader' {
+declare module "sass-loader/lib/loader" {
   declare module.exports: any;
 }
 
-declare module 'sass-loader/lib/normalizeOptions' {
+declare module "sass-loader/lib/normalizeOptions" {
   declare module.exports: any;
 }
 
-declare module 'sass-loader/lib/proxyCustomImporters' {
+declare module "sass-loader/lib/proxyCustomImporters" {
   declare module.exports: any;
 }
 
-declare module 'sass-loader/lib/webpackImporter' {
+declare module "sass-loader/lib/webpackImporter" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'sass-loader/lib/formatSassError.js' {
-  declare module.exports: $Exports<'sass-loader/lib/formatSassError'>;
+declare module "sass-loader/lib/formatSassError.js" {
+  declare module.exports: $Exports<"sass-loader/lib/formatSassError">;
 }
-declare module 'sass-loader/lib/importsToResolve.js' {
-  declare module.exports: $Exports<'sass-loader/lib/importsToResolve'>;
+declare module "sass-loader/lib/importsToResolve.js" {
+  declare module.exports: $Exports<"sass-loader/lib/importsToResolve">;
 }
-declare module 'sass-loader/lib/loader.js' {
-  declare module.exports: $Exports<'sass-loader/lib/loader'>;
+declare module "sass-loader/lib/loader.js" {
+  declare module.exports: $Exports<"sass-loader/lib/loader">;
 }
-declare module 'sass-loader/lib/normalizeOptions.js' {
-  declare module.exports: $Exports<'sass-loader/lib/normalizeOptions'>;
+declare module "sass-loader/lib/normalizeOptions.js" {
+  declare module.exports: $Exports<"sass-loader/lib/normalizeOptions">;
 }
-declare module 'sass-loader/lib/proxyCustomImporters.js' {
-  declare module.exports: $Exports<'sass-loader/lib/proxyCustomImporters'>;
+declare module "sass-loader/lib/proxyCustomImporters.js" {
+  declare module.exports: $Exports<"sass-loader/lib/proxyCustomImporters">;
 }
-declare module 'sass-loader/lib/webpackImporter.js' {
-  declare module.exports: $Exports<'sass-loader/lib/webpackImporter'>;
+declare module "sass-loader/lib/webpackImporter.js" {
+  declare module.exports: $Exports<"sass-loader/lib/webpackImporter">;
 }

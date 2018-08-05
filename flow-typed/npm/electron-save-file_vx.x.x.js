@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'electron-save-file' {
+declare module "electron-save-file" {
   declare module.exports: any;
 }
 
@@ -23,11 +23,10 @@ declare module 'electron-save-file' {
  * needed.
  */
 
-
 // Filename aliases
-declare module 'electron-save-file/index' {
-  declare module.exports: $Exports<'electron-save-file'>;
+declare module "electron-save-file/index" {
+  declare module.exports: $Exports<"electron-save-file">;
 }
-declare module 'electron-save-file/index.js' {
-  declare module.exports: $Exports<'electron-save-file'>;
+declare module "electron-save-file/index.js" {
+  declare module.exports: $Exports<"electron-save-file">;
 }

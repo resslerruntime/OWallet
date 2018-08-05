@@ -37,86 +37,89 @@
 </template>
 
 <script>
-  import Breadcrumb from './Breadcrumb'
-  import LangStorage from './../../core/lang'
+import Breadcrumb from "./Breadcrumb";
+import LangStorage from "./../../core/lang";
 
-  const {dialog} = require('electron').remote;
+const { dialog } = require("electron").remote;
 
-  export default {
-    name: 'Setting',
-    data() {
-      return {
-        net: localStorage.getItem('net') || 'TEST_NET',
-        lang: this.$i18n.locale,
-        savePath: localStorage.getItem('savePath')
-      }
+export default {
+  name: "Setting",
+  data() {
+    return {
+      net: localStorage.getItem("net") || "TEST_NET",
+      lang: this.$i18n.locale,
+      savePath: localStorage.getItem("savePath")
+    };
+  },
+  methods: {
+    handleBack() {
+      this.$router.push({ name: "Wallets" });
     },
-    methods: {
-      handleBack() {
-        this.$router.push({name: 'Wallets'})
-      },
-      changeNet() {
-        localStorage.setItem('net', this.net);
-        this.$store.commit('UPDATE_SETTING_NETWORK', {network: this.net})
-        setTimeout(() => {
-          const net = this.net === 'TEST_NET' ? 'TestNet' : 'MainNet';
-          this.$message.success('The network has been set to ' + net);
-        }, 100)
-      },
-      changeLanguage() {
-        this.$i18n.locale = this.lang
-        LangStorage.setLang(this.$i18n.locale)
-      },
-      setSavePath() {
-        dialog.showOpenDialog({properties: ['openDirectory','createDirectory']}, (filePath) => {
+    changeNet() {
+      localStorage.setItem("net", this.net);
+      this.$store.commit("UPDATE_SETTING_NETWORK", { network: this.net });
+      setTimeout(() => {
+        const net = this.net === "TEST_NET" ? "TestNet" : "MainNet";
+        this.$message.success("The network has been set to " + net);
+      }, 100);
+    },
+    changeLanguage() {
+      this.$i18n.locale = this.lang;
+      LangStorage.setLang(this.$i18n.locale);
+    },
+    setSavePath() {
+      dialog.showOpenDialog(
+        { properties: ["openDirectory", "createDirectory"] },
+        filePath => {
           if (filePath === undefined) {
-            alert('You did not set the path')
+            alert("You did not set the path");
             return;
           }
-          localStorage.setItem('savePath', filePath[0])
-          localStorage.setItem('isSavePath', 'true')
-          this.savePath = filePath[0]
-          window.location.reload()
-          setTimeout(function(){
-            this.$message.success('Change keystore file path successfully!')
-          },100)
-        })
-      }
-    },
-    components: {
-      Breadcrumb
+          localStorage.setItem("savePath", filePath[0]);
+          localStorage.setItem("isSavePath", "true");
+          this.savePath = filePath[0];
+          window.location.reload();
+          setTimeout(function() {
+            this.$message.success("Change keystore file path successfully!");
+          }, 100);
+        }
+      );
     }
+  },
+  components: {
+    Breadcrumb
   }
+};
 </script>
 
 <style>
-  .setting-container {
-    padding: 0 20px;
-    height: 100%;
-  }
+.setting-container {
+  padding: 0 20px;
+  height: 100%;
+}
 
-  .form-container {
-    padding: 0 20px;
-    width: 800px;
-  }
+.form-container {
+  padding: 0 20px;
+  width: 800px;
+}
 
-  .form-container label {
-    color: #000000;
-    font-size: 16px;
-    font-family: AvenirNext-Bold;
-  }
+.form-container label {
+  color: #000000;
+  font-size: 16px;
+  font-family: AvenirNext-Bold;
+}
 
-  .form-container select {
-    border-radius: 0;
-  }
+.form-container select {
+  border-radius: 0;
+}
 
-  .form-group-top {
-    margin-top: 45px;
-  }
+.form-group-top {
+  margin-top: 45px;
+}
 
-  .span-path-title {
-    color: #000000;
-    font-size: 16px;
-    font-family: AvenirNext;
-  }
+.span-path-title {
+  color: #000000;
+  font-size: 16px;
+  font-family: AvenirNext;
+}
 </style>

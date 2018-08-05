@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'resolve-url-loader' {
+declare module "resolve-url-loader" {
   declare module.exports: any;
 }
 
@@ -22,24 +22,26 @@ declare module 'resolve-url-loader' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'resolve-url-loader/lib/find-file' {
+declare module "resolve-url-loader/lib/find-file" {
   declare module.exports: any;
 }
 
-declare module 'resolve-url-loader/lib/sources-absolute-to-relative' {
+declare module "resolve-url-loader/lib/sources-absolute-to-relative" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'resolve-url-loader/index' {
-  declare module.exports: $Exports<'resolve-url-loader'>;
+declare module "resolve-url-loader/index" {
+  declare module.exports: $Exports<"resolve-url-loader">;
 }
-declare module 'resolve-url-loader/index.js' {
-  declare module.exports: $Exports<'resolve-url-loader'>;
+declare module "resolve-url-loader/index.js" {
+  declare module.exports: $Exports<"resolve-url-loader">;
 }
-declare module 'resolve-url-loader/lib/find-file.js' {
-  declare module.exports: $Exports<'resolve-url-loader/lib/find-file'>;
+declare module "resolve-url-loader/lib/find-file.js" {
+  declare module.exports: $Exports<"resolve-url-loader/lib/find-file">;
 }
-declare module 'resolve-url-loader/lib/sources-absolute-to-relative.js' {
-  declare module.exports: $Exports<'resolve-url-loader/lib/sources-absolute-to-relative'>;
+declare module "resolve-url-loader/lib/sources-absolute-to-relative.js" {
+  declare module.exports: $Exports<
+    "resolve-url-loader/lib/sources-absolute-to-relative"
+  >;
 }

@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'extract-text-webpack-plugin' {
+declare module "extract-text-webpack-plugin" {
   declare module.exports: any;
 }
 
@@ -22,53 +22,61 @@ declare module 'extract-text-webpack-plugin' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'extract-text-webpack-plugin/dist/cjs' {
+declare module "extract-text-webpack-plugin/dist/cjs" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/index' {
+declare module "extract-text-webpack-plugin/dist/index" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/lib/ExtractedModule' {
+declare module "extract-text-webpack-plugin/dist/lib/ExtractedModule" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation' {
+declare module "extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/lib/helpers' {
+declare module "extract-text-webpack-plugin/dist/lib/helpers" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/lib/OrderUndefinedError' {
+declare module "extract-text-webpack-plugin/dist/lib/OrderUndefinedError" {
   declare module.exports: any;
 }
 
-declare module 'extract-text-webpack-plugin/dist/loader' {
+declare module "extract-text-webpack-plugin/dist/loader" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'extract-text-webpack-plugin/dist/cjs.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/cjs'>;
+declare module "extract-text-webpack-plugin/dist/cjs.js" {
+  declare module.exports: $Exports<"extract-text-webpack-plugin/dist/cjs">;
 }
-declare module 'extract-text-webpack-plugin/dist/index.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/index'>;
+declare module "extract-text-webpack-plugin/dist/index.js" {
+  declare module.exports: $Exports<"extract-text-webpack-plugin/dist/index">;
 }
-declare module 'extract-text-webpack-plugin/dist/lib/ExtractedModule.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/ExtractedModule'>;
+declare module "extract-text-webpack-plugin/dist/lib/ExtractedModule.js" {
+  declare module.exports: $Exports<
+    "extract-text-webpack-plugin/dist/lib/ExtractedModule"
+  >;
 }
-declare module 'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation'>;
+declare module "extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation.js" {
+  declare module.exports: $Exports<
+    "extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation"
+  >;
 }
-declare module 'extract-text-webpack-plugin/dist/lib/helpers.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/helpers'>;
+declare module "extract-text-webpack-plugin/dist/lib/helpers.js" {
+  declare module.exports: $Exports<
+    "extract-text-webpack-plugin/dist/lib/helpers"
+  >;
 }
-declare module 'extract-text-webpack-plugin/dist/lib/OrderUndefinedError.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/OrderUndefinedError'>;
+declare module "extract-text-webpack-plugin/dist/lib/OrderUndefinedError.js" {
+  declare module.exports: $Exports<
+    "extract-text-webpack-plugin/dist/lib/OrderUndefinedError"
+  >;
 }
-declare module 'extract-text-webpack-plugin/dist/loader.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/loader'>;
+declare module "extract-text-webpack-plugin/dist/loader.js" {
+  declare module.exports: $Exports<"extract-text-webpack-plugin/dist/loader">;
 }

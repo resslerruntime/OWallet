@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'bs58check' {
+declare module "bs58check" {
   declare module.exports: any;
 }
 
@@ -23,11 +23,10 @@ declare module 'bs58check' {
  * needed.
  */
 
-
 // Filename aliases
-declare module 'bs58check/index' {
-  declare module.exports: $Exports<'bs58check'>;
+declare module "bs58check/index" {
+  declare module.exports: $Exports<"bs58check">;
 }
-declare module 'bs58check/index.js' {
-  declare module.exports: $Exports<'bs58check'>;
+declare module "bs58check/index.js" {
+  declare module.exports: $Exports<"bs58check">;
 }

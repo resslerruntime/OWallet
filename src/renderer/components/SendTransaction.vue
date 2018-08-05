@@ -26,58 +26,57 @@
 </template>
 
 <script>
-import { TEST_NET, MAIN_NET } from '../../core/consts'
-import { RestClient } from 'ontology-ts-sdk'
+import { TEST_NET, MAIN_NET } from "../../core/consts";
+import { RestClient } from "ontology-ts-sdk";
 
 export default {
-    name: 'SendTransaction',
-    data() {
-        const net = localStorage.getItem('net');
-        const network = net === 'TEST_NET' ? 'Test net' : 'Main net';
-        return {
-            txData: '',
-            txHash: '',
-            checkLink: '',
-            network: network
-        }
-        
-    },
+  name: "SendTransaction",
+  data() {
+    const net = localStorage.getItem("net");
+    const network = net === "TEST_NET" ? "Test net" : "Main net";
+    return {
+      txData: "",
+      txHash: "",
+      checkLink: "",
+      network: network
+    };
+  },
 
-    methods: {
-        sendTx() {
-            if(!this.txData) {
-                return;
-            }
-            let url = ''
-            const net = localStorage.getItem('net');
-            if (net === 'TEST_NET') {
-                url = TEST_NET + ':20334'
-            } else {
-                url = MAIN_NET + ':20334'
-            }
-            const rest = new RestClient(url)
-            rest.sendRawTransaction(this.txData.trim()).then(res => {
-                if(res.Error === 0) {
-                    this.txHash = res.Result
-                    let link = `https://explorer.ont.io/transaction/${res.Result}`
-                    if (net === 'TEST_NET') {
-                        link += '/testnet'
-                    }
-                    this.checkLink = link;
-                    alert('Transaction has bee sent.');
-                } else {
-                    const result = 'Error Code: '+ res.Error + ', Error Desc: ' + res.Desc;
-                    alert('Transaction sent failed.Please try later.' + result);
-                }
-                
-            })
-        },
-        back() {
-            // this.$router.push({name:'Dashboard'})
-            this.$router.back();
-        },
+  methods: {
+    sendTx() {
+      if (!this.txData) {
+        return;
+      }
+      let url = "";
+      const net = localStorage.getItem("net");
+      if (net === "TEST_NET") {
+        url = TEST_NET + ":20334";
+      } else {
+        url = MAIN_NET + ":20334";
+      }
+      const rest = new RestClient(url);
+      rest.sendRawTransaction(this.txData.trim()).then(res => {
+        if (res.Error === 0) {
+          this.txHash = res.Result;
+          let link = `https://explorer.ont.io/transaction/${res.Result}`;
+          if (net === "TEST_NET") {
+            link += "/testnet";
+          }
+          this.checkLink = link;
+          alert("Transaction has bee sent.");
+        } else {
+          const result =
+            "Error Code: " + res.Error + ", Error Desc: " + res.Desc;
+          alert("Transaction sent failed.Please try later." + result);
+        }
+      });
+    },
+    back() {
+      // this.$router.push({name:'Dashboard'})
+      this.$router.back();
     }
-}
+  }
+};
 </script>
 
 <style>
@@ -88,7 +87,7 @@ export default {
 }
 
 .txDataText {
-    height:260px;
+  height: 260px;
 }
 .sendSuccess {
   float: left;
@@ -99,7 +98,7 @@ export default {
   margin-top: 50px;
 }
 .sendSuccess textarea {
-    width: 100%;
+  width: 100%;
 }
 .successText {
   color: green;

@@ -1,38 +1,37 @@
 <style scoped>
 .label {
-    font-weight: bold;
-    position: relative;
-    font-family: 'AvenirNext-Bold';
-    color: #5E6369;
-    font-size:1.25rem;
-    margin:0;
+  font-weight: bold;
+  position: relative;
+  font-family: "AvenirNext-Bold";
+  color: #5e6369;
+  font-size: 1.25rem;
+  margin: 0;
 }
 .select-asset {
-    width:calc(100% - 4rem);
-    margin-top:12px;
-    margin-bottom: 24px;
-    margin-left: 4rem;
+  width: calc(100% - 4rem);
+  margin-top: 12px;
+  margin-bottom: 24px;
+  margin-left: 4rem;
 }
 .input-amount {
-    margin-bottom:24px;
-    padding-left: 4rem;
+  margin-bottom: 24px;
+  padding-left: 4rem;
 }
-
 
 .fee-label {
-    height: 36px;
-    line-height: 36px;
-    margin:0;
+  height: 36px;
+  line-height: 36px;
+  margin: 0;
 }
 .fee-select {
-    margin-bottom:50px;
-    padding-left: 4rem;
+  margin-bottom: 50px;
+  padding-left: 4rem;
 }
 .recipient-input {
-    padding-left: 4rem;
+  padding-left: 4rem;
 }
 .error-to {
-    border-color:red;
+  border-color: red;
 }
 </style>
 <template>
@@ -82,66 +81,64 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
-    name: 'SendAsset',
-    data(){
-        return {
-            gas: 0.01,
-            asset:'ONT',
-            amount: 0,
-            to:'',
-            validToAddress: true
-        }
-    },
-    computed: {
-        ...mapState({
-            balance: state => state.CurrentWallet.transfer.balance
-        })
-    },
-    mounted() {
-        const transfer = this.$store.state.CurrentWallet.transfer
-        this.gas = transfer.gas;
-        this.asset = transfer.asset;
-        this.amount = transfer.amount;
-        this.to = transfer.to;
-    },
+  name: "SendAsset",
+  data() {
+    return {
+      gas: 0.01,
+      asset: "ONT",
+      amount: 0,
+      to: "",
+      validToAddress: true
+    };
+  },
+  computed: {
+    ...mapState({
+      balance: state => state.CurrentWallet.transfer.balance
+    })
+  },
+  mounted() {
+    const transfer = this.$store.state.CurrentWallet.transfer;
+    this.gas = transfer.gas;
+    this.asset = transfer.asset;
+    this.amount = transfer.amount;
+    this.to = transfer.to;
+  },
 
-    methods: {
-        validateToAddress() {
-            if(!this.to || this.to.length !== 34 || this.to[0] !== 'A') {
-                this.validToAddress = false;
-            }
-            this.validToAddress = true;
-        },
-        changeAsset(value) {
-            console.log(value)
-        },
-        maxAmount() {
-            if(this.asset === 'ONT') {
-                this.amount = this.balance.ont;
-            } else {
-                this.amount = this.balance.ong;
-            }
-        },
-        cancel() {
-            this.$store.commit('CLEAR_CURRENT_TRANSFER')
-            this.$emit('cancelEvent');
-        },
-        next() {
-            if(this.amount && this.to) {
-                const transfer = {
-                    amount: this.amount,
-                    to: this.to,
-                    gas: this.gas,
-                    asset: this.asset
-                }
-                this.$store.commit('UPDATE_TRANSFER', {transfer})
-                this.$emit('sendAssetNext')
-            }
-        },
+  methods: {
+    validateToAddress() {
+      if (!this.to || this.to.length !== 34 || this.to[0] !== "A") {
+        this.validToAddress = false;
+      }
+      this.validToAddress = true;
+    },
+    changeAsset(value) {
+      console.log(value);
+    },
+    maxAmount() {
+      if (this.asset === "ONT") {
+        this.amount = this.balance.ont;
+      } else {
+        this.amount = this.balance.ong;
+      }
+    },
+    cancel() {
+      this.$store.commit("CLEAR_CURRENT_TRANSFER");
+      this.$emit("cancelEvent");
+    },
+    next() {
+      if (this.amount && this.to) {
+        const transfer = {
+          amount: this.amount,
+          to: this.to,
+          gas: this.gas,
+          asset: this.asset
+        };
+        this.$store.commit("UPDATE_TRANSFER", { transfer });
+        this.$emit("sendAssetNext");
+      }
     }
-}
+  }
+};
 </script>
-
-

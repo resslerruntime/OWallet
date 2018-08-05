@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'react-data-grid' {
+declare module "react-data-grid" {
   declare module.exports: any;
 }
 
@@ -22,24 +22,24 @@ declare module 'react-data-grid' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'react-data-grid/dist/react-data-grid' {
+declare module "react-data-grid/dist/react-data-grid" {
   declare module.exports: any;
 }
 
-declare module 'react-data-grid/dist/react-data-grid.min' {
+declare module "react-data-grid/dist/react-data-grid.min" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'react-data-grid/dist/react-data-grid.js' {
-  declare module.exports: $Exports<'react-data-grid/dist/react-data-grid'>;
+declare module "react-data-grid/dist/react-data-grid.js" {
+  declare module.exports: $Exports<"react-data-grid/dist/react-data-grid">;
 }
-declare module 'react-data-grid/dist/react-data-grid.min.js' {
-  declare module.exports: $Exports<'react-data-grid/dist/react-data-grid.min'>;
+declare module "react-data-grid/dist/react-data-grid.min.js" {
+  declare module.exports: $Exports<"react-data-grid/dist/react-data-grid.min">;
 }
-declare module 'react-data-grid/index' {
-  declare module.exports: $Exports<'react-data-grid'>;
+declare module "react-data-grid/index" {
+  declare module.exports: $Exports<"react-data-grid">;
 }
-declare module 'react-data-grid/index.js' {
-  declare module.exports: $Exports<'react-data-grid'>;
+declare module "react-data-grid/index.js" {
+  declare module.exports: $Exports<"react-data-grid">;
 }

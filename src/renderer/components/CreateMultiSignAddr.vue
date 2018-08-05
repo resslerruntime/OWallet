@@ -43,112 +43,118 @@
 </template>
 
 <script>
-import { Crypto } from 'ontology-ts-sdk';
+import { Crypto } from "ontology-ts-sdk";
 export default {
-    name: 'CreateMultiSignAddr',
-    data() {
-        return {
-            label: '',
-            pkNum:1,
-            sigNum:1,
-            pkItems:[{value:'', name:''}],
-            multiAddr : ''
-        }
+  name: "CreateMultiSignAddr",
+  data() {
+    return {
+      label: "",
+      pkNum: 1,
+      sigNum: 1,
+      pkItems: [{ value: "", name: "" }],
+      multiAddr: ""
+    };
+  },
+  methods: {
+    changeSigNum() {
+      this.sigNum = parseInt(this.sigNum);
     },
-    methods: {
-        changeSigNum() {
-            this.sigNum = parseInt(this.sigNum);
-        },
-        changePknum() {
-            this.pkNum = parseInt(this.pkNum);
-            if ( this.pkNum &&  this.sigNum && this.sigNum > this.pkNum) {
-                alert('Related public key number should be bigger than signature number.');
-                this.pkNum = 0;
-                return;
-            }
-            if ( this.pkNum && this.pkNum < this.pkItems.length) {
-                alert('Public key number is not correct.');
-                this.pkNum = 0;
-                return;
-            }
-            if (this.pkNum && this.pkNum > this.pkItems.length) {
-                const diff = this.pkNum - this.pkItems.length;
-                for (let i = 0; i < diff; i++) {
-                    this.pkItems.push({value:'', name:''});
-                }
-            }
-        },
-        deletePk(index) {
-            const pks = this.pkItems.slice();
-            pks.splice(index, 1);
-            this.pkItems = pks;
-        },
-        createMultiSignAddr() {
-            for (const i of this.pkItems) {
-                if ( !i.value) {
-                    alert('Please input all the public keys.');
-                    return;
-                }
-            }
-            if (this.pkNum && this.sigNum && this.pkItems.length === this.pkNum) {
-                const pks = this.pkItems.map((p) => new Crypto.PublicKey(p.value));
-                const multiAddr = Crypto.Address.fromMultiPubKeys(this.sigNum, pks);
-                const sharedAddress = multiAddr.toBase58();
-                const copayers = this.pkItems.map(pk =>  {
-                    return {
-                        name: pk.name,
-                        publickey: pk.value,
-                        address: Crypto.Address.fromPubKey(new Crypto.PublicKey(pk.value)).toBase58()
-                    }
-                })
-                const body = {
-                    "sharedWalletAddress": sharedAddress,
-                    "sharedWalletName": this.label,
-                    "totalNumber": this.pkNum,
-                    "requiredNumber": this.sigNum,
-                    "coPayers":copayers
-                }
-                //save shared wallet to ontpass
-                this.$store.dispatch('createSharedWallet', body).then(res => {
-                    this.multiAddr = sharedAddress;
-                }, err => {
-                    console.log(err)
-                })
-
-            } else {
-                alert('Please input correct values.')
-                return;
-            }
-        },
-        back() {
-          this.$router.push({name:'Wallets'})
+    changePknum() {
+      this.pkNum = parseInt(this.pkNum);
+      if (this.pkNum && this.sigNum && this.sigNum > this.pkNum) {
+        alert(
+          "Related public key number should be bigger than signature number."
+        );
+        this.pkNum = 0;
+        return;
       }
+      if (this.pkNum && this.pkNum < this.pkItems.length) {
+        alert("Public key number is not correct.");
+        this.pkNum = 0;
+        return;
+      }
+      if (this.pkNum && this.pkNum > this.pkItems.length) {
+        const diff = this.pkNum - this.pkItems.length;
+        for (let i = 0; i < diff; i++) {
+          this.pkItems.push({ value: "", name: "" });
+        }
+      }
+    },
+    deletePk(index) {
+      const pks = this.pkItems.slice();
+      pks.splice(index, 1);
+      this.pkItems = pks;
+    },
+    createMultiSignAddr() {
+      for (const i of this.pkItems) {
+        if (!i.value) {
+          alert("Please input all the public keys.");
+          return;
+        }
+      }
+      if (this.pkNum && this.sigNum && this.pkItems.length === this.pkNum) {
+        const pks = this.pkItems.map(p => new Crypto.PublicKey(p.value));
+        const multiAddr = Crypto.Address.fromMultiPubKeys(this.sigNum, pks);
+        const sharedAddress = multiAddr.toBase58();
+        const copayers = this.pkItems.map(pk => {
+          return {
+            name: pk.name,
+            publickey: pk.value,
+            address: Crypto.Address.fromPubKey(
+              new Crypto.PublicKey(pk.value)
+            ).toBase58()
+          };
+        });
+        const body = {
+          sharedWalletAddress: sharedAddress,
+          sharedWalletName: this.label,
+          totalNumber: this.pkNum,
+          requiredNumber: this.sigNum,
+          coPayers: copayers
+        };
+        //save shared wallet to ontpass
+        this.$store.dispatch("createSharedWallet", body).then(
+          res => {
+            this.multiAddr = sharedAddress;
+          },
+          err => {
+            console.log(err);
+          }
+        );
+      } else {
+        alert("Please input correct values.");
+        return;
+      }
+    },
+    back() {
+      this.$router.push({ name: "Wallets" });
     }
-}
+  }
+};
 </script>
 
 <style>
 .formContainer {
-    width: 50%;
-    padding:15px;
-    float:left;
+  width: 50%;
+  padding: 15px;
+  float: left;
 }
 
 .createSuccess {
-    float:left;
-    border: 1px solid #dddddd;
-    width: 40%;
-    margin:15px;
-    padding:15px;
+  float: left;
+  border: 1px solid #dddddd;
+  width: 40%;
+  margin: 15px;
+  padding: 15px;
 }
 .successText {
-    color: green;
-    font-size: 20px;
+  color: green;
+  font-size: 20px;
 }
 
 .pkul {
-    list-style:none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .pkItem {
@@ -158,12 +164,12 @@ export default {
 }
 
 .pkItem button {
-    margin:10px;
-    float: left;
+  margin: 10px;
+  float: left;
 }
 .pkItem input {
-    width: 80%;
-    margin-bottom:5px;
+  width: 80%;
+  margin-bottom: 5px;
 }
 .pkInput {
   width: 80%;

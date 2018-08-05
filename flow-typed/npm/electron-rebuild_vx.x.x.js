@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'electron-rebuild' {
+declare module "electron-rebuild" {
   declare module.exports: any;
 }
 
@@ -22,39 +22,41 @@ declare module 'electron-rebuild' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'electron-rebuild/lib/src/cli' {
+declare module "electron-rebuild/lib/src/cli" {
   declare module.exports: any;
 }
 
-declare module 'electron-rebuild/lib/src/electron-locater' {
+declare module "electron-rebuild/lib/src/electron-locater" {
   declare module.exports: any;
 }
 
-declare module 'electron-rebuild/lib/src/main' {
+declare module "electron-rebuild/lib/src/main" {
   declare module.exports: any;
 }
 
-declare module 'electron-rebuild/lib/src/read-package-json' {
+declare module "electron-rebuild/lib/src/read-package-json" {
   declare module.exports: any;
 }
 
-declare module 'electron-rebuild/lib/src/rebuild' {
+declare module "electron-rebuild/lib/src/rebuild" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'electron-rebuild/lib/src/cli.js' {
-  declare module.exports: $Exports<'electron-rebuild/lib/src/cli'>;
+declare module "electron-rebuild/lib/src/cli.js" {
+  declare module.exports: $Exports<"electron-rebuild/lib/src/cli">;
 }
-declare module 'electron-rebuild/lib/src/electron-locater.js' {
-  declare module.exports: $Exports<'electron-rebuild/lib/src/electron-locater'>;
+declare module "electron-rebuild/lib/src/electron-locater.js" {
+  declare module.exports: $Exports<"electron-rebuild/lib/src/electron-locater">;
 }
-declare module 'electron-rebuild/lib/src/main.js' {
-  declare module.exports: $Exports<'electron-rebuild/lib/src/main'>;
+declare module "electron-rebuild/lib/src/main.js" {
+  declare module.exports: $Exports<"electron-rebuild/lib/src/main">;
 }
-declare module 'electron-rebuild/lib/src/read-package-json.js' {
-  declare module.exports: $Exports<'electron-rebuild/lib/src/read-package-json'>;
+declare module "electron-rebuild/lib/src/read-package-json.js" {
+  declare module.exports: $Exports<
+    "electron-rebuild/lib/src/read-package-json"
+  >;
 }
-declare module 'electron-rebuild/lib/src/rebuild.js' {
-  declare module.exports: $Exports<'electron-rebuild/lib/src/rebuild'>;
+declare module "electron-rebuild/lib/src/rebuild.js" {
+  declare module.exports: $Exports<"electron-rebuild/lib/src/rebuild">;
 }

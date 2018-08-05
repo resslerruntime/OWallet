@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'js-scrypt' {
+declare module "js-scrypt" {
   declare module.exports: any;
 }
 
@@ -22,45 +22,45 @@ declare module 'js-scrypt' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'js-scrypt/lib/argument-scrubber' {
+declare module "js-scrypt/lib/argument-scrubber" {
   declare module.exports: any;
 }
 
-declare module 'js-scrypt/lib/scrypt-async-worker' {
+declare module "js-scrypt/lib/scrypt-async-worker" {
   declare module.exports: any;
 }
 
-declare module 'js-scrypt/lib/scrypt-async' {
+declare module "js-scrypt/lib/scrypt-async" {
   declare module.exports: any;
 }
 
-declare module 'js-scrypt/lib/scrypt-module-factory' {
+declare module "js-scrypt/lib/scrypt-module-factory" {
   declare module.exports: any;
 }
 
-declare module 'js-scrypt/lib/scrypt-sync' {
+declare module "js-scrypt/lib/scrypt-sync" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'js-scrypt/index' {
-  declare module.exports: $Exports<'js-scrypt'>;
+declare module "js-scrypt/index" {
+  declare module.exports: $Exports<"js-scrypt">;
 }
-declare module 'js-scrypt/index.js' {
-  declare module.exports: $Exports<'js-scrypt'>;
+declare module "js-scrypt/index.js" {
+  declare module.exports: $Exports<"js-scrypt">;
 }
-declare module 'js-scrypt/lib/argument-scrubber.js' {
-  declare module.exports: $Exports<'js-scrypt/lib/argument-scrubber'>;
+declare module "js-scrypt/lib/argument-scrubber.js" {
+  declare module.exports: $Exports<"js-scrypt/lib/argument-scrubber">;
 }
-declare module 'js-scrypt/lib/scrypt-async-worker.js' {
-  declare module.exports: $Exports<'js-scrypt/lib/scrypt-async-worker'>;
+declare module "js-scrypt/lib/scrypt-async-worker.js" {
+  declare module.exports: $Exports<"js-scrypt/lib/scrypt-async-worker">;
 }
-declare module 'js-scrypt/lib/scrypt-async.js' {
-  declare module.exports: $Exports<'js-scrypt/lib/scrypt-async'>;
+declare module "js-scrypt/lib/scrypt-async.js" {
+  declare module.exports: $Exports<"js-scrypt/lib/scrypt-async">;
 }
-declare module 'js-scrypt/lib/scrypt-module-factory.js' {
-  declare module.exports: $Exports<'js-scrypt/lib/scrypt-module-factory'>;
+declare module "js-scrypt/lib/scrypt-module-factory.js" {
+  declare module.exports: $Exports<"js-scrypt/lib/scrypt-module-factory">;
 }
-declare module 'js-scrypt/lib/scrypt-sync.js' {
-  declare module.exports: $Exports<'js-scrypt/lib/scrypt-sync'>;
+declare module "js-scrypt/lib/scrypt-sync.js" {
+  declare module.exports: $Exports<"js-scrypt/lib/scrypt-sync">;
 }

@@ -1,235 +1,233 @@
 <style scoped>
 .header-header {
-    height:4rem;
-    padding:1.1rem 0;
-    width:100%;
-
+  height: 4rem;
+  padding: 1.1rem 0;
+  width: 100%;
 }
 .home-container {
-    padding:0 20px;
-    height: 100%;
+  padding: 0 20px;
+  height: 100%;
 }
 
 .content-container {
-    display: flex;
+  display: flex;
 }
 
 .left-half {
-    flex-basis: 50%;
+  flex-basis: 50%;
 }
 
 .right-half {
-    flex-basis: 50%;
-    padding-left: 40px;
+  flex-basis: 50%;
+  padding-left: 40px;
 }
 
 .asset {
-    margin:20px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .claim-btn {
-    text-align: center;
+  text-align: center;
 }
 
 .rule {
-    text-align:center;
+  text-align: center;
 }
 
 .owners-table {
-
 }
 
 .table-item {
-    margin:10px 0;
+  margin: 10px 0;
 }
 .table-item :first-child {
-    width:72px;
-    overflow: hidden;
-    display: inline-block;
-    text-overflow: ellipsis;
+  width: 72px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
 }
 .table-item :last-child {
-    float:right;
+  float: right;
 }
 .wallet-info {
-    position: relative;
-    padding-top:12px;
-    font-family: AvenirNext-Regular;
-    font-size:0.88rem;
-    height:4rem;
+  position: relative;
+  padding-top: 12px;
+  font-family: AvenirNext-Regular;
+  font-size: 0.88rem;
+  height: 4rem;
 }
 .wallet-info p {
-    margin-bottom:4px;
+  margin-bottom: 4px;
 }
 
 .wallet-type {
-    position: absolute;
-    width:4rem;
-    height:4rem;
-    background:url('../assets/commonwallet.png') center center;
-    background-size:cover;
-    right:0;
-    top:-12px;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background: url("../assets/commonwallet.png") center center;
+  background-size: cover;
+  right: 0;
+  top: -12px;
 }
 .wallet-balance {
-    font-size:16px;
-    color:#000000;
-    font-family: 'AvenirNext-Bold';
-    position: relative;
-    margin-top:48px;
+  font-size: 16px;
+  color: #000000;
+  font-family: "AvenirNext-Bold";
+  position: relative;
+  margin-top: 48px;
 }
 .wallet-balance :first-child {
-    float: left;
-    margin-right:20px;
+  float: left;
+  margin-right: 20px;
 }
 .refresh-icon {
-    display: inline-block;
-    height:24px;
-    width:24px;
-    background: url('../assets/refresh.png') center center;
-    background-size:cover;
-    margin-left: 14px;
-    cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  background: url("../assets/refresh.png") center center;
+  background-size: cover;
+  margin-left: 14px;
+  cursor: pointer;
 }
 .asset-ont {
-    height:2.56rem;
-    line-height: 2.56rem;
-    margin-top:12px;
+  height: 2.56rem;
+  line-height: 2.56rem;
+  margin-top: 12px;
 }
 .asset-ong {
-    height:2.56rem;
-    line-height: 2.56rem;
-    margin-top:12px;
+  height: 2.56rem;
+  line-height: 2.56rem;
+  margin-top: 12px;
 }
 .asset-label {
-    font-family: AvenirNext-Medium;
-    font-size:0.88rem;
-    color:#515457;
-    float:left;
-    margin-right: 12px;
+  font-family: AvenirNext-Medium;
+  font-size: 0.88rem;
+  color: #515457;
+  float: left;
+  margin-right: 12px;
 }
 .asset-amount {
-    font-family: AvenirNext-Medium;
-    font-size:18px;
-    color:#000000;
+  font-family: AvenirNext-Medium;
+  font-size: 18px;
+  color: #000000;
 }
 .asset-value {
-    padding-left: 3rem;
-    font-family: AvenirNext-Medium;
-    font-size:14px;
-    color:#000000;
-    margin-bottom: 20px;
+  padding-left: 3rem;
+  font-family: AvenirNext-Medium;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
 .asset-btn {
-    border-radius:0;
-    background:#196BD8;
-    font-family: AvenirNext-Medium;
-    font-size: 14px;
-    color: #FFFFFF;
-    width:100px;
-    height:34px;
-    margin-right: 40px;
-    margin-bottom:60px;
-    border:none;
+  border-radius: 0;
+  background: #196bd8;
+  font-family: AvenirNext-Medium;
+  font-size: 14px;
+  color: #ffffff;
+  width: 100px;
+  height: 34px;
+  margin-right: 40px;
+  margin-bottom: 60px;
+  border: none;
 }
 .arrow-up {
-    width:10px;
-    height:15px;
-    background: url('../assets/sendArrow.png') center center;
-    background-size:cover;
-    display: inline-block;
-    background-repeat: no-repeat;
-    float: left;
-    margin-top:3px;
+  width: 10px;
+  height: 15px;
+  background: url("../assets/sendArrow.png") center center;
+  background-size: cover;
+  display: inline-block;
+  background-repeat: no-repeat;
+  float: left;
+  margin-top: 3px;
 }
 .arrow-down {
-    width:10px;
-    height:15px;
-    background: url('../assets/sendArrow.png') center center;
-    background-size:cover;
-    display: inline-block;
-    background-repeat: no-repeat;
-    float: left;
-    margin-top:3px;
-    transform: rotate(180deg)
+  width: 10px;
+  height: 15px;
+  background: url("../assets/sendArrow.png") center center;
+  background-size: cover;
+  display: inline-block;
+  background-repeat: no-repeat;
+  float: left;
+  margin-top: 3px;
+  transform: rotate(180deg);
 }
 .copayer-header {
-    padding-bottom:5px;
-    border-bottom: 1px solid #DFE2E9;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dfe2e9;
 }
 .copayer-header :last-child {
-    float:right;
-    font-family: AvenirNext-Bold;
-    font-size: 14px;
-    color: #6F7781;
+  float: right;
+  font-family: AvenirNext-Bold;
+  font-size: 14px;
+  color: #6f7781;
 }
 .copayer-header :first-child {
-    font-family: AvenirNext-Bold;
-    font-size: 14px;
-    color: #000000;
+  font-family: AvenirNext-Bold;
+  font-size: 14px;
+  color: #000000;
 }
 .check-more {
-    font-family: AvenirNext-Medium;
-    font-size: 12px;
-    color: #227EEC;
-    text-align: center;
-    cursor: pointer;
+  font-family: AvenirNext-Medium;
+  font-size: 12px;
+  color: #227eec;
+  text-align: center;
+  cursor: pointer;
 }
 .txList-header {
-    padding-bottom: 5px;
-    border-bottom: 1px solid #DFE2E9;
-    position: relative;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dfe2e9;
+  position: relative;
 }
 .txList-header :first-child {
-    font-family: AvenirNext-Bold;
-    font-size: 14px;
-    color: #000000;
-    text-align: center;
+  font-family: AvenirNext-Bold;
+  font-size: 14px;
+  color: #000000;
+  text-align: center;
 }
 
 .txList-header :last-child {
-    width:64px;
-    height:64px;
-    display: block;
-    float: right;
-    background: url('../assets/transaction.png');
-    background-size:contain;
-    top:-20px;
-    right: 0;
-    position: absolute;
+  width: 64px;
+  height: 64px;
+  display: block;
+  float: right;
+  background: url("../assets/transaction.png");
+  background-size: contain;
+  top: -20px;
+  right: 0;
+  position: absolute;
 }
 .pending-tx {
-    margin-bottom: 50px;
-    height:30%;
-    overflow: scroll;
+  margin-bottom: 50px;
+  height: 30%;
+  overflow: scroll;
 }
 .tx-item {
-    float: left;
-    margin: 5px 0;
+  float: left;
+  margin: 5px 0;
 }
 .tx-item :first-child {
-    width:65%;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-family: AvenirNext-Medium;
-    font-size: 12px;
-    color:#6F7781;
+  width: 65%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: AvenirNext-Medium;
+  font-size: 12px;
+  color: #6f7781;
 }
 .tx-item :last-child {
-    width:30%;
-    text-align:right;
-    float: right;
-    display: block;
-    font-family: AvenirNext-Medium;
-    font-size: 12px;
-    color: #000000;
+  width: 30%;
+  text-align: right;
+  float: right;
+  display: block;
+  font-family: AvenirNext-Medium;
+  font-size: 12px;
+  color: #000000;
 }
 .wallet-pk {
-  word-break:break-all;
+  word-break: break-all;
 }
 
 .claim-ong-container {
@@ -240,15 +238,15 @@
 }
 
 .claim-ong-item {
-  margin-bottom:10px;
+  margin-bottom: 10px;
   position: relative;
 }
 .claim-ong-item :first-child {
   font-family: AvenirNext-Medium;
   font-size: 12px;
   color: #515457;
-  margin-right:8px;
-  width:100px;
+  margin-right: 8px;
+  width: 100px;
   display: block;
   float: left;
 }
@@ -261,15 +259,15 @@
 .btn-redeem {
   float: left;
   margin-left: 30px;
-  width:70px;
+  width: 70px;
   height: 28px;
-  border-radius:0;
-  background:#FBE45A;
-  padding:0;
+  border-radius: 0;
+  background: #fbe45a;
+  padding: 0;
   font-family: AvenirNext-Medium;
   font-size: 14px;
-  color: #5E6369;
-  border:none;
+  color: #5e6369;
+  border: none;
 }
 </style>
 <template>
@@ -359,273 +357,320 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import {legacySignWithLedger} from '../../core/ontLedger'
-  import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE } from '../../core/consts'
-import {Crypto, OntAssetTxBuilder} from 'ontology-ts-sdk'
-import axios from 'axios';
-import Breadcrumb from './Breadcrumb'
-  export default {
-    name: 'Dashboard',
-    components:{
-      Breadcrumb
+import { mapState } from "vuex";
+import { legacySignWithLedger } from "../../core/ontLedger";
+import {
+  TEST_NET,
+  MAIN_NET,
+  ONT_CONTRACT,
+  ONT_PASS_NODE
+} from "../../core/consts";
+import { Crypto, OntAssetTxBuilder } from "ontology-ts-sdk";
+import axios from "axios";
+import Breadcrumb from "./Breadcrumb";
+export default {
+  name: "Dashboard",
+  components: {
+    Breadcrumb
+  },
+  data() {
+    const publicKey = localStorage.getItem("publicKey");
+    const address = localStorage.getItem("address");
+    const currentWallet = JSON.parse(sessionStorage.getItem("currentWallet"));
+    const net = localStorage.getItem("net");
+    const network = net && net === "TEST_NET" ? "Test Net" : "Main Net";
+    let url = "";
+    if (net === "TEST_NET") {
+      url = TEST_NET + ":20334";
+    } else {
+      url = MAIN_NET + ":20334";
+    }
+    return {
+      currentWallet,
+      publicKey: publicKey,
+      address: address,
+      amount: 0,
+      toAddress: "",
+      balance: { ont: 0, ong: 0.0, ontValue: 0 },
+      transactions: "",
+      asset: "ONT",
+      network: network,
+      nodeUrl: url,
+      unboundOng: 0,
+      waitBoundOng: 0,
+      completedTx: []
+    };
+  },
+  computed: {
+    //   ...mapState({
+    //     address: state => state.Auth.address,
+    //     publicKey: state => state.Auth.publicKey
+    //   })
+  },
+  mounted: function() {
+    this.refresh();
+  },
+  methods: {
+    handleBack() {
+      this.$router.push({ name: "Wallets" });
     },
-    data() {
-      const publicKey = localStorage.getItem('publicKey');
-      const address = localStorage.getItem('address');
-      const currentWallet = JSON.parse(sessionStorage.getItem('currentWallet'))
-      const net = localStorage.getItem('net');
-      const network = net && net === 'TEST_NET' ? 'Test Net' : 'Main Net';
-      let url = ''
-      if (net === 'TEST_NET') {
-          url = TEST_NET + ':20334'
-      } else {
-          url = MAIN_NET + ':20334'
-      }
-      return {
-        currentWallet,
-        publicKey : publicKey,
-        address : address,
-        amount: 0,
-        toAddress: '',
-        balance: {ont: 0, ong: 0.0000, ontValue:0},
-        transactions: '',
-        asset: 'ONT',
-        network:network,
-        nodeUrl: url,
-        unboundOng:0,
-        waitBoundOng:0,
-        completedTx:[]
-      }
+    goSetting() {
+      this.$router.push({ name: "Setting" });
     },
-    computed: {
-      //   ...mapState({
-      //     address: state => state.Auth.address,
-      //     publicKey: state => state.Auth.publicKey
-      //   })
+    ledgerLogin() {
+      this.$router.push({ name: "LoginLedger" });
     },
-    mounted: function () {
-      this.refresh()
-    },
-    methods: {
-        handleBack() {
-          this.$router.push({name:'Wallets'})
-        },
-        goSetting() {
-            this.$router.push({name:'Setting'})
-        },
-        ledgerLogin() {
-            this.$router.push({name:'LoginLedger'})
-        },
-        setSavePath() {
-            dialog.showOpenDialog({properties: ['openDirectory']}, (filePath) => {
-                if (filePath === undefined) {
-                    alert('You did not set the path')
-                    return;
-                }
-                console.log(filePath);
-                localStorage.setItem('savePath', filePath);
-                return;
-            })
-        },
-        toWalletHome(wallet) {
-            localStorage.setItem('publicKey', wallet.publicKey);
-            localStorage.setItem('address', wallet.address)
-            this.$router.push({name: 'Home'})
-            
-        },
-        toSharedWalletHome(wallet) {
-            const walletObj = {
-                address: wallet.sharedWalletAddress,
-                coPayers: wallet.coPayers,
-                requiredNumber: wallet.requiredNumber,
-                totalNumber: wallet.totalNumber
-            }
-            // this.$store.commit('UPDATE_CURRENT_WALLET',{wallet: walletObj})
-            sessionStorage.setItem('sharedWallet', JSON.stringify(walletObj))
-            this.$router.push({name: 'SharedWalletHome'})
-        },
-        createSharedWallet() {
-            this.$router.push({name: 'CreateSharedWallet'})
-        },
-      getTransactions() {
-        const url = this.network === 'Test Net' ? 'https://polarisexplorer.ont.io' : 'https://explorer.ont.io';
-        this.axios.get(url + '/api/v1/explorer/address/' + this.address + '/10/1').then(response => {
-          if (response.status === 200 && response.data && response.data.Result) {
-            const txlist = response.data.Result.TxnList
-                const completed = txlist.map(t => {
-                    const asset = t.TransferList[0].AssetName === 'ont'? 'ONT' : 'ONG'
-                    let amount = asset === 'ONT' ? parseInt(t.TransferList[0].Amount) 
-                                : Number(t.TransferList[0].Amount).toFixed(2)
-                    if(t.TransferList[0].FromAddress === this.address) {
-                        amount = '-' + amount;
-                    } else {
-                        amount = '+' + amount;
-                    }
-                    return {
-                        txHash: t.TxnHash,
-                        asset,
-                        amount: amount
-                    }
-                })
-                this.completedTx = completed;
-          } else {
-            console.log(response)
-          }
-        }).catch(err => {
-          console.log(err)
-            this.$message.error('Fetch transaction history failed.Network error')
-        })
-      },
-      getUnclaimOng() {
-          const restClient = new Ont.RestClient(this.nodeUrl);
-          restClient.getAllowance('ong', new Crypto.Address(ONT_CONTRACT), new Crypto.Address(this.address)).then(res => {
-            console.log(res.Result)
-            this.unclaimOng = Number(res.Result)/1e9;
-          }).catch(err => {
-            this.$message.error('Network error')
-          })
-      },
-      getBalance() {
-        const urlNode = this.network === 'Test Net' ? 'https://polarisexplorer.ont.io' : 'https://explorer.ont.io';        
-        const url = `${urlNode}/api/v1/explorer/address/balance/${this.address}`
-        axios.get(url).then(res => {
-          if(res.data.Result) {
-            for(let r of res.data.Result) {
-              if(r.AssetName === 'ong') {
-                this.balance.ong = r.Balance;
-              }
-              if(r.AssetName === 'waitboundong') {
-                this.waitBoundOng = r.Balance;
-              }
-              if(r.AssetName === 'unboundong') {
-                this.unboundOng = r.Balance;
-              }
-              if(r.AssetName === 'ont') {
-                this.balance.ont = r.Balance;
-              }
-            }
-            this.getExchangeCurrency()
-          }
-        })
-        
-      },
-      getExchangeCurrency() {
-        const currency = 'ont'
-        const goaltype = 'USD'
-        const amount = this.balance.ont;
-        const url = `https://service.onto.app/S3/api/v1/onto/exchangerate/reckon/${currency}/${goaltype}/${amount}`;
-        axios.get(url).then(res => {
-            console.log(res)
-            if(res.data.Result) {
-                this.balance.ontValue = res.data.Result.Money
-            }
-        })
-      },
-      refresh() {
-        this.getBalance();
-        this.getTransactions();
-      },
-      sendAsset() {
-        this.$store.commit('CLEAR_CURRENT_TRANSFER');
-        this.$store.commit('UPDATE_TRANSFER_BALANCE', {balance: this.balance})
-        this.$router.push({name:'CommonSendHome'})
-      },
-      commnReceive() {
-          this.$router.push({path: '/commonWalletReceive/commonWallet'})
-      },
-      claimOng() {
-        // makeWithdrawOngTx(addressObj, addressObj, value, new Address(payer), gasPrice, gasLimit)
-        const from = new Crypto.Address(this.address);
-        const to = from;
-        const value = this.unclaimOng*1e9;
-        const tx = OntAssetTxBuilder.makeWithdrawOngTx(from, to, value, from, '500', '20000');
-        const pk = new Ont.Crypto.PublicKey(this.publicKey);
-        const txSig = new Ont.TxSignature();
-        txSig.M = 1;
-        txSig.pubKeys = [pk];
-        tx.payer = from;
-
-        const txData = tx.serializeUnsignedData();
-        legacySignWithLedger(txData, this.publicKey).then(res => {
-          // console.log('txSigned: ' + res);
-          const sign = '01' + res; //ECDSAwithSHA256
-          txSig.sigData = [sign]
-          tx.sigs = [txSig];
-          const txSerialized = tx.serialize();
-          // console.log('txSerialized: ' + txSerialized);
-
-          //send tx
-          restClient.sendRawTransaction(txSerialized).then(resp => {
-            console.log('send tx resp: ' + JSON.stringify(resp));
-            if(resp.Error === 0) {
-              alert('Transaction has been sent successfully.')
-            } else {
-              alert('Transfer failed. ' + resp.Result)
-            }
-          })
-        }, err => {
-          alert(err.message)
-        })
-      },
-      send() {
-        if (!this.address || !this.toAddress || !this.amount) {
+    setSavePath() {
+      dialog.showOpenDialog({ properties: ["openDirectory"] }, filePath => {
+        if (filePath === undefined) {
+          alert("You did not set the path");
           return;
         }
-        if (this.asset === 'ONT' && Number(this.amount) > this.balance.ont ||
-            this.asset === 'ONG' && Number(this.amount) > this.balance.ong) {
-              alert('Balance is not enough.')
-              return;
+        console.log(filePath);
+        localStorage.setItem("savePath", filePath);
+        return;
+      });
+    },
+    toWalletHome(wallet) {
+      localStorage.setItem("publicKey", wallet.publicKey);
+      localStorage.setItem("address", wallet.address);
+      this.$router.push({ name: "Home" });
+    },
+    toSharedWalletHome(wallet) {
+      const walletObj = {
+        address: wallet.sharedWalletAddress,
+        coPayers: wallet.coPayers,
+        requiredNumber: wallet.requiredNumber,
+        totalNumber: wallet.totalNumber
+      };
+      // this.$store.commit('UPDATE_CURRENT_WALLET',{wallet: walletObj})
+      sessionStorage.setItem("sharedWallet", JSON.stringify(walletObj));
+      this.$router.push({ name: "SharedWalletHome" });
+    },
+    createSharedWallet() {
+      this.$router.push({ name: "CreateSharedWallet" });
+    },
+    getTransactions() {
+      const url =
+        this.network === "Test Net"
+          ? "https://polarisexplorer.ont.io"
+          : "https://explorer.ont.io";
+      this.axios
+        .get(url + "/api/v1/explorer/address/" + this.address + "/10/1")
+        .then(response => {
+          if (
+            response.status === 200 &&
+            response.data &&
+            response.data.Result
+          ) {
+            const txlist = response.data.Result.TxnList;
+            const completed = txlist.map(t => {
+              const asset =
+                t.TransferList[0].AssetName === "ont" ? "ONT" : "ONG";
+              let amount =
+                asset === "ONT"
+                  ? parseInt(t.TransferList[0].Amount)
+                  : Number(t.TransferList[0].Amount).toFixed(2);
+              if (t.TransferList[0].FromAddress === this.address) {
+                amount = "-" + amount;
+              } else {
+                amount = "+" + amount;
+              }
+              return {
+                txHash: t.TxnHash,
+                asset,
+                amount: amount
+              };
+            });
+            this.completedTx = completed;
+          } else {
+            console.log(response);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          this.$message.error("Fetch transaction history failed.Network error");
+        });
+    },
+    getUnclaimOng() {
+      const restClient = new Ont.RestClient(this.nodeUrl);
+      restClient
+        .getAllowance(
+          "ong",
+          new Crypto.Address(ONT_CONTRACT),
+          new Crypto.Address(this.address)
+        )
+        .then(res => {
+          console.log(res.Result);
+          this.unclaimOng = Number(res.Result) / 1e9;
+        })
+        .catch(err => {
+          this.$message.error("Network error");
+        });
+    },
+    getBalance() {
+      const urlNode =
+        this.network === "Test Net"
+          ? "https://polarisexplorer.ont.io"
+          : "https://explorer.ont.io";
+      const url = `${urlNode}/api/v1/explorer/address/balance/${this.address}`;
+      axios.get(url).then(res => {
+        if (res.data.Result) {
+          for (let r of res.data.Result) {
+            if (r.AssetName === "ong") {
+              this.balance.ong = r.Balance;
+            }
+            if (r.AssetName === "waitboundong") {
+              this.waitBoundOng = r.Balance;
+            }
+            if (r.AssetName === "unboundong") {
+              this.unboundOng = r.Balance;
+            }
+            if (r.AssetName === "ont") {
+              this.balance.ont = r.Balance;
+            }
+          }
+          this.getExchangeCurrency();
         }
-        const restClient = new Ont.RestClient(this.nodeUrl);
-        const from = new Ont.Crypto.Address(this.address);
-        const to = new Ont.Crypto.Address(this.toAddress);
-        const amount = this.asset === 'ONT' ? this.amount : Number(this.amount) * 1e9;
-        const tx = Ont.OntAssetTxBuilder.makeTransferTx(this.asset, from, to, amount, '500', '20000');
-        const pk = new Ont.Crypto.PublicKey(this.publicKey);
-        const txSig = new Ont.TxSignature();
-        txSig.M = 1;
-        txSig.pubKeys = [pk];
-        tx.payer = from;
+      });
+    },
+    getExchangeCurrency() {
+      const currency = "ont";
+      const goaltype = "USD";
+      const amount = this.balance.ont;
+      const url = `https://service.onto.app/S3/api/v1/onto/exchangerate/reckon/${currency}/${goaltype}/${amount}`;
+      axios.get(url).then(res => {
+        console.log(res);
+        if (res.data.Result) {
+          this.balance.ontValue = res.data.Result.Money;
+        }
+      });
+    },
+    refresh() {
+      this.getBalance();
+      this.getTransactions();
+    },
+    sendAsset() {
+      this.$store.commit("CLEAR_CURRENT_TRANSFER");
+      this.$store.commit("UPDATE_TRANSFER_BALANCE", { balance: this.balance });
+      this.$router.push({ name: "CommonSendHome" });
+    },
+    commnReceive() {
+      this.$router.push({ path: "/commonWalletReceive/commonWallet" });
+    },
+    claimOng() {
+      // makeWithdrawOngTx(addressObj, addressObj, value, new Address(payer), gasPrice, gasLimit)
+      const from = new Crypto.Address(this.address);
+      const to = from;
+      const value = this.unclaimOng * 1e9;
+      const tx = OntAssetTxBuilder.makeWithdrawOngTx(
+        from,
+        to,
+        value,
+        from,
+        "500",
+        "20000"
+      );
+      const pk = new Ont.Crypto.PublicKey(this.publicKey);
+      const txSig = new Ont.TxSignature();
+      txSig.M = 1;
+      txSig.pubKeys = [pk];
+      tx.payer = from;
 
-        const txData = tx.serializeUnsignedData();
-        legacySignWithLedger(txData, this.publicKey).then(res => {
+      const txData = tx.serializeUnsignedData();
+      legacySignWithLedger(txData, this.publicKey).then(
+        res => {
           // console.log('txSigned: ' + res);
-          const sign = '01' + res; //ECDSAwithSHA256
-          txSig.sigData = [sign]
+          const sign = "01" + res; //ECDSAwithSHA256
+          txSig.sigData = [sign];
           tx.sigs = [txSig];
           const txSerialized = tx.serialize();
           // console.log('txSerialized: ' + txSerialized);
 
           //send tx
           restClient.sendRawTransaction(txSerialized).then(resp => {
-            console.log('send tx resp: ' + JSON.stringify(resp));
-            this.amount = 0;
-            this.toAddress = '';
-            if(resp.Error === 0) {
-              alert('Transaction has been sent successfully.')
+            console.log("send tx resp: " + JSON.stringify(resp));
+            if (resp.Error === 0) {
+              alert("Transaction has been sent successfully.");
             } else {
-              alert('Transfer failed. ' + resp.Result)
+              alert("Transfer failed. " + resp.Result);
             }
-          })
-        }, err => {
-          alert(err.message)
-        })
-        // console.log('send tx: ' + txData);
-      },
-      goBack() {
-        this.$router.push({name: 'Wallets'})
-      },
-      showTransferBox() {
-
-      },
-      checkMoreTx() {
-        let url = `https://explorer.ont.io/address/${this.address}/10/1`
-        if(this.network === 'Test Net') {
-            url += '/testnet'
+          });
+        },
+        err => {
+          alert(err.message);
         }
-        window.location.href = url;
+      );
+    },
+    send() {
+      if (!this.address || !this.toAddress || !this.amount) {
+        return;
       }
+      if (
+        (this.asset === "ONT" && Number(this.amount) > this.balance.ont) ||
+        (this.asset === "ONG" && Number(this.amount) > this.balance.ong)
+      ) {
+        alert("Balance is not enough.");
+        return;
+      }
+      const restClient = new Ont.RestClient(this.nodeUrl);
+      const from = new Ont.Crypto.Address(this.address);
+      const to = new Ont.Crypto.Address(this.toAddress);
+      const amount =
+        this.asset === "ONT" ? this.amount : Number(this.amount) * 1e9;
+      const tx = Ont.OntAssetTxBuilder.makeTransferTx(
+        this.asset,
+        from,
+        to,
+        amount,
+        "500",
+        "20000"
+      );
+      const pk = new Ont.Crypto.PublicKey(this.publicKey);
+      const txSig = new Ont.TxSignature();
+      txSig.M = 1;
+      txSig.pubKeys = [pk];
+      tx.payer = from;
+
+      const txData = tx.serializeUnsignedData();
+      legacySignWithLedger(txData, this.publicKey).then(
+        res => {
+          // console.log('txSigned: ' + res);
+          const sign = "01" + res; //ECDSAwithSHA256
+          txSig.sigData = [sign];
+          tx.sigs = [txSig];
+          const txSerialized = tx.serialize();
+          // console.log('txSerialized: ' + txSerialized);
+
+          //send tx
+          restClient.sendRawTransaction(txSerialized).then(resp => {
+            console.log("send tx resp: " + JSON.stringify(resp));
+            this.amount = 0;
+            this.toAddress = "";
+            if (resp.Error === 0) {
+              alert("Transaction has been sent successfully.");
+            } else {
+              alert("Transfer failed. " + resp.Result);
+            }
+          });
+        },
+        err => {
+          alert(err.message);
+        }
+      );
+      // console.log('send tx: ' + txData);
+    },
+    goBack() {
+      this.$router.push({ name: "Wallets" });
+    },
+    showTransferBox() {},
+    checkMoreTx() {
+      let url = `https://explorer.ont.io/address/${this.address}/10/1`;
+      if (this.network === "Test Net") {
+        url += "/testnet";
+      }
+      window.location.href = url;
     }
   }
+};
 </script>

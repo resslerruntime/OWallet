@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'axios-mock-adapter' {
+declare module "axios-mock-adapter" {
   declare module.exports: any;
 }
 
@@ -22,39 +22,43 @@ declare module 'axios-mock-adapter' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'axios-mock-adapter/dist/axios-mock-adapter' {
+declare module "axios-mock-adapter/dist/axios-mock-adapter" {
   declare module.exports: any;
 }
 
-declare module 'axios-mock-adapter/dist/axios-mock-adapter.min' {
+declare module "axios-mock-adapter/dist/axios-mock-adapter.min" {
   declare module.exports: any;
 }
 
-declare module 'axios-mock-adapter/src/handle_request' {
+declare module "axios-mock-adapter/src/handle_request" {
   declare module.exports: any;
 }
 
-declare module 'axios-mock-adapter/src/index' {
+declare module "axios-mock-adapter/src/index" {
   declare module.exports: any;
 }
 
-declare module 'axios-mock-adapter/src/utils' {
+declare module "axios-mock-adapter/src/utils" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'axios-mock-adapter/dist/axios-mock-adapter.js' {
-  declare module.exports: $Exports<'axios-mock-adapter/dist/axios-mock-adapter'>;
+declare module "axios-mock-adapter/dist/axios-mock-adapter.js" {
+  declare module.exports: $Exports<
+    "axios-mock-adapter/dist/axios-mock-adapter"
+  >;
 }
-declare module 'axios-mock-adapter/dist/axios-mock-adapter.min.js' {
-  declare module.exports: $Exports<'axios-mock-adapter/dist/axios-mock-adapter.min'>;
+declare module "axios-mock-adapter/dist/axios-mock-adapter.min.js" {
+  declare module.exports: $Exports<
+    "axios-mock-adapter/dist/axios-mock-adapter.min"
+  >;
 }
-declare module 'axios-mock-adapter/src/handle_request.js' {
-  declare module.exports: $Exports<'axios-mock-adapter/src/handle_request'>;
+declare module "axios-mock-adapter/src/handle_request.js" {
+  declare module.exports: $Exports<"axios-mock-adapter/src/handle_request">;
 }
-declare module 'axios-mock-adapter/src/index.js' {
-  declare module.exports: $Exports<'axios-mock-adapter/src/index'>;
+declare module "axios-mock-adapter/src/index.js" {
+  declare module.exports: $Exports<"axios-mock-adapter/src/index">;
 }
-declare module 'axios-mock-adapter/src/utils.js' {
-  declare module.exports: $Exports<'axios-mock-adapter/src/utils'>;
+declare module "axios-mock-adapter/src/utils.js" {
+  declare module.exports: $Exports<"axios-mock-adapter/src/utils">;
 }

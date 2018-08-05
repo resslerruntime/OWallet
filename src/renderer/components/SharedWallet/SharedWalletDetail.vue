@@ -8,9 +8,8 @@
 </template>
 <script>
 export default {
-    name: 'SharedWalletDetail'
-}
+  name: "SharedWalletDetail"
+};
 </script>
 <style>
-
 </style>

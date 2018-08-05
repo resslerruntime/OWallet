@@ -49,95 +49,97 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { Crypto, RestClient } from 'ontology-ts-sdk'
-import { TEST_NET, MAIN_NET } from '../../core/consts'
-import ClipboardJS from 'clipboard';
-import {Transaction} from 'ontology-ts-sdk'
+import axios from "axios";
+import { Crypto, RestClient } from "ontology-ts-sdk";
+import { TEST_NET, MAIN_NET } from "../../core/consts";
+import ClipboardJS from "clipboard";
+import { Transaction } from "ontology-ts-sdk";
 export default {
   name: "SignMultiAddrTx",
   data() {
     return {
       sigNum: 2,
       pkItems: [{ value: "" }],
-      txData: '',
-      signedTx: '',
+      txData: "",
+      signedTx: "",
       signatureNum: 0,
-     sigPublicKeys:[]
+      sigPublicKeys: []
     };
   },
   mounted() {
-      new ClipboardJS('#copyBtn');
+    new ClipboardJS("#copyBtn");
   },
   methods: {
     back() {
       this.$router.push({ name: "Wallets" });
     },
-    changeSigNum(){
-        this.sigNum = parseInt(this.sigNum);
+    changeSigNum() {
+      this.sigNum = parseInt(this.sigNum);
     },
     addPk() {
-        this.pkItems.push({value:''});
+      this.pkItems.push({ value: "" });
     },
     deletePk(index) {
-            const pks = this.pkItems.slice();
-            pks.splice(index, 1);
-            this.pkItems = pks;
+      const pks = this.pkItems.slice();
+      pks.splice(index, 1);
+      this.pkItems = pks;
     },
     signTx() {
-        const url = 'http://localhost:20000/cli';
-        const m = this.sigNum;
-        const pks = this.pkItems.map(p => p.value);
-        const body = {
-            qid: '1',
-            method : 'sigmutilrawtx',
-            params : {
-                raw_tx : this.txData.trim(),
-                m : m,
-                pub_keys: pks
-            }
+      const url = "http://localhost:20000/cli";
+      const m = this.sigNum;
+      const pks = this.pkItems.map(p => p.value);
+      const body = {
+        qid: "1",
+        method: "sigmutilrawtx",
+        params: {
+          raw_tx: this.txData.trim(),
+          m: m,
+          pub_keys: pks
         }
-        if (m < 2 || pks.length <=0 || !this.txData) {
-            alert('Please input correct values.')
-            return;
-        }
-        axios.post(url, body).then(res => {
-            console.log(res);
-            if(res.data.error_code === 0) {
-                const signedTx = res.data.result.signed_tx;
-                this.signedTx = signedTx;
-            } else {
-                alert('Sign transaction failed. ' + res.data.error_info);
-            }
-
-        }).catch(err => {
-            alert('Please make sure you already started the local sign service')
+      };
+      if (m < 2 || pks.length <= 0 || !this.txData) {
+        alert("Please input correct values.");
+        return;
+      }
+      axios
+        .post(url, body)
+        .then(res => {
+          console.log(res);
+          if (res.data.error_code === 0) {
+            const signedTx = res.data.result.signed_tx;
+            this.signedTx = signedTx;
+          } else {
+            alert("Sign transaction failed. " + res.data.error_info);
+          }
         })
+        .catch(err => {
+          alert("Please make sure you already started the local sign service");
+        });
     },
-    copyTx() {
-
-    },
+    copyTx() {},
     toSend() {
-        this.$router.push({name: 'SendTransaction'})
+      this.$router.push({ name: "SendTransaction" });
     },
     deserializeTx() {
-        if(this.txData) {
-            try {
-                const txObj = Ont.Transaction.deserialize(this.txData.trim());
-                console.log(txObj)
-                this.signatureNum = txObj.sigs.length;
-                if(txObj.sigs.length > 0) {
-                    this.sigPublicKeys = txObj.sigs[0].pubKeys;
-                    const pkItems = this.sigPublicKeys.map( p => {return {value: p.key}});
-                    this.pkItems = pkItems;
-                    this.sigNum = txObj.sigs[0].M
-                }
-            }catch(e) {
-                this.signatureNum = 0;
-                this.sigPublicKeys = [];
-                console.log(e)
-            }
+      if (this.txData) {
+        try {
+          const txObj = Ont.Transaction.deserialize(this.txData.trim());
+          console.log(txObj);
+          this.signatureNum = txObj.sigs.length;
+          if (txObj.sigs.length > 0) {
+            this.sigPublicKeys = txObj.sigs[0].pubKeys;
+            const pkItems = this.sigPublicKeys.map(p => {
+              return { value: p.key };
+            });
+            this.pkItems = pkItems;
+            this.sigNum = txObj.sigs[0].M;
+          }
+        } catch (e) {
+          this.signatureNum = 0;
+          this.sigPublicKeys = [];
+          console.log(e);
         }
+      }
     }
   }
 };
@@ -172,8 +174,8 @@ export default {
 }
 
 .pkItem button {
-    margin:10px;
-    float: left;
+  margin: 10px;
+  float: left;
 }
 .pkInput {
   width: 80%;
@@ -186,18 +188,17 @@ export default {
   font-size: 14px;
 }
 .successTx {
-    width:100%;
+  width: 100%;
 }
 .txDataText {
-    height:230px;
+  height: 230px;
 }
 
 .notice {
-    margin-bottom:10px;
+  margin-bottom: 10px;
 }
-.notice p{
-    font-family: SourceSansPro;
-    margin-bottom:5px;
+.notice p {
+  font-family: SourceSansPro;
+  margin-bottom: 5px;
 }
 </style>
-

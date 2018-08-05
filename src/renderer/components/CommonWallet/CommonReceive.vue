@@ -1,53 +1,53 @@
 <style scoped>
 .content-container {
-    width:540px;
-    margin:20px auto;
+  width: 540px;
+  margin: 20px auto;
 }
 .label {
-    font-family: AvenirNext-Bold;
-    font-size: 14px;
-    color: #000000;
-    margin-bottom:30px;
+  font-family: AvenirNext-Bold;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 30px;
 }
 .qrcode {
-    text-align:center;
-    margin-bottom:40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 .address-item {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-.address-item  :first-child{
-    width:40%;
-    float: left;
-    font-family: AvenirNext-Regular;
-    font-size: 14px;
-    color: #000000;
+.address-item :first-child {
+  width: 40%;
+  float: left;
+  font-family: AvenirNext-Regular;
+  font-size: 14px;
+  color: #000000;
 }
 
 .value-item {
-    width:60%;
-    float:right;
+  width: 60%;
+  float: right;
 }
 .value-item :first-child {
-    width:280px;
-    display: block;
-    float: left;
-    word-break: break-all;
+  width: 280px;
+  display: block;
+  float: left;
+  word-break: break-all;
 }
 .font-regular {
-    font-family: AvenirNext-Regular;
-    font-size: 14px;
-    color: #000000;
+  font-family: AvenirNext-Regular;
+  font-size: 14px;
+  color: #000000;
 }
 .copy-icon {
-    width:18px;
-    height:18px;
-    display: inline-block;
-    margin-left: 10px;
-    background: url('../../assets/copy.png') center center;
-    background-size: cover;
-    cursor: pointer;
-    margin-top:10px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-left: 10px;
+  background: url("../../assets/copy.png") center center;
+  background-size: cover;
+  cursor: pointer;
+  margin-top: 10px;
 }
 </style>
 <template>
@@ -77,49 +77,47 @@
 </template>
 
 <script>
-import Breadcrumb from '../Breadcrumb'
-import VueQrcode from '@xkeshi/vue-qrcode'
+import Breadcrumb from "../Breadcrumb";
+import VueQrcode from "@xkeshi/vue-qrcode";
 export default {
-    name:'CommonReceive',
-    components:{
-        Breadcrumb,
-        VueQrcode
-    },
-    data() {
-        const type = this.$route.params.walletType
-        let wallet, walletName, routes, address, pk;
-        if(type === 'commonWallet') {
-            wallet = JSON.parse(sessionStorage.getItem('currentWallet'))
-            walletName = wallet.label
-            routes = [{name: walletName, path:'/dashboard'}]
-            address = wallet.address
-            pk = wallet.publicKey
-        } else {
-            wallet = JSON.parse(sessionStorage.getItem('sharedWallet'))
-            walletName = wallet.sharedWalletName
-            routes = [{name: walletName, path:'/sharedWallet/home'}]   
-            address = wallet.sharedWalletAddress
-            pk = ''         
-        }
-
-        return {
-            address,
-            pk,
-            walletName,
-            routes,
-        }
-    },
-    mounted() {
-        
-    },
-    methods: {
-        backToWallets() {
-            this.$router.push({name:'Wallets'})
-        },
-        copy(value) {
-            this.$copyText(value);
-            this.$message.success('Copied!')
-        }
+  name: "CommonReceive",
+  components: {
+    Breadcrumb,
+    VueQrcode
+  },
+  data() {
+    const type = this.$route.params.walletType;
+    let wallet, walletName, routes, address, pk;
+    if (type === "commonWallet") {
+      wallet = JSON.parse(sessionStorage.getItem("currentWallet"));
+      walletName = wallet.label;
+      routes = [{ name: walletName, path: "/dashboard" }];
+      address = wallet.address;
+      pk = wallet.publicKey;
+    } else {
+      wallet = JSON.parse(sessionStorage.getItem("sharedWallet"));
+      walletName = wallet.sharedWalletName;
+      routes = [{ name: walletName, path: "/sharedWallet/home" }];
+      address = wallet.sharedWalletAddress;
+      pk = "";
     }
-}
+
+    return {
+      address,
+      pk,
+      walletName,
+      routes
+    };
+  },
+  mounted() {},
+  methods: {
+    backToWallets() {
+      this.$router.push({ name: "Wallets" });
+    },
+    copy(value) {
+      this.$copyText(value);
+      this.$message.success("Copied!");
+    }
+  }
+};
 </script>

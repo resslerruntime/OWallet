@@ -1,7 +1,5 @@
 [中文版](./README_cn.md)
 
-
-
 <h1 align="center">OWallet - a comprehensive Ontology desktop wallet</h1>
 <h4 align="center">Version 0.8.0</h4>
 

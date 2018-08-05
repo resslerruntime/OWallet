@@ -1,9 +1,8 @@
 <style scoped>
-
 .import-steps {
-    width:540px;
-    margin:0 auto;
-    height: 4rem;
+  width: 540px;
+  margin: 0 auto;
+  height: 4rem;
 }
 </style>
 <template>
@@ -21,34 +20,29 @@
     
 </template>
 <script>
-import QuerySharedWallet from './Import/QuerySharedWallet'
-import InputPass from './Import/InputPass'
-import {mapState} from 'vuex'
-import Breadcrumb from '../Breadcrumb'
+import QuerySharedWallet from "./Import/QuerySharedWallet";
+import InputPass from "./Import/InputPass";
+import { mapState } from "vuex";
+import Breadcrumb from "../Breadcrumb";
 export default {
-    name: 'ImportSharedWallet',
-    data() {
-        return {
-
-        }
-    },
-    computed:{
-        ...mapState({
-            current: state => state.ImportSharedWallet.currentStep
-        })
-    },
-    components: {
-        QuerySharedWallet,
-        InputPass,
-        Breadcrumb
-    },
-    methods:{
-        back(){
-            this.$router.push({name:'Wallets'})
-        }
+  name: "ImportSharedWallet",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState({
+      current: state => state.ImportSharedWallet.currentStep
+    })
+  },
+  components: {
+    QuerySharedWallet,
+    InputPass,
+    Breadcrumb
+  },
+  methods: {
+    back() {
+      this.$router.push({ name: "Wallets" });
     }
-}
+  }
+};
 </script>
-
-
-

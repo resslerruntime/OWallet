@@ -1,103 +1,102 @@
 <style scoped>
 .confirm-container {
-
 }
 .drag-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 .label-container {
-    position: relative;
+  position: relative;
 }
 .label {
-    font-weight: bold;
-    font-family: 'AvenirNext-Bold';
-    color: #5E6369;
-    font-size:1.25rem;
-    margin:0;
+  font-weight: bold;
+  font-family: "AvenirNext-Bold";
+  color: #5e6369;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .asset-table {
-    padding: 5px 50px;
+  padding: 5px 50px;
 }
 .asset-item {
-    border-bottom: 1px solid #dddddd;
-    padding:10px 20px;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
 }
 .asset-item span {
-    width: 30%;
-    display: inline-block;
-    text-align: left;
+  width: 30%;
+  display: inline-block;
+  text-align: left;
 }
 .asset-item :nth-child(2) {
-    width:69%;
-    display: inline-block;
-    text-align: right
+  width: 69%;
+  display: inline-block;
+  text-align: right;
 }
 .select-sponsor {
-    margin-left: 20px;
-    width:80%;
-    margin-bottom:15px;
+  margin-left: 20px;
+  width: 80%;
+  margin-bottom: 15px;
 }
 .circle {
-    display: inline-block;
-    text-align: center;
-    border:1px solid #dddddd;
-    border-radius:50%;
-    width:1.5rem;
-    height:1.5rem;
-    line-height: 1.5rem;
-    background:#FBE45A;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background: #fbe45a;
 }
 .confirm-btns {
-    position: fixed;
-    bottom: 0;
-    left: 4rem;
-    height:5.3rem;
-    width:calc(100% - 4rem);
-    z-index: 1000;
-    box-shadow: 0 -1px 6px 0 #F2F2F2;
-    background:#ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 4rem;
+  height: 5.3rem;
+  width: calc(100% - 4rem);
+  z-index: 1000;
+  box-shadow: 0 -1px 6px 0 #f2f2f2;
+  background: #ffffff;
 }
 .fee {
-    padding-left: 20px;
-    padding-top:10px;
-    margin-bottom:50px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-bottom: 50px;
 }
 .sponsor-select {
-    padding-left: 4rem;
+  padding-left: 4rem;
 }
 .sponsor-label {
-    margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .sponsor-label :last-child {
-    float: right;
+  float: right;
 }
 .drag-container {
-    margin-top: 20px;
-    padding-left: 4rem;
+  margin-top: 20px;
+  padding-left: 4rem;
 }
 .payer-item {
-    height: 30px;
+  height: 30px;
 }
 .payer-item:hover {
-    background: #F5F7FB;
+  background: #f5f7fb;
 }
 .payer-item:hover span {
-    color: #196BD8 !important;
+  color: #196bd8 !important;
 }
 .payer-item :nth-child(2) {
-    margin-left: 14px;
+  margin-left: 14px;
 }
 .payer-item :nth-child(3) {
-    float: right;
-    margin-right: 14px;
+  float: right;
+  margin-right: 14px;
 }
 .btns-container {
-    width:500px;
-    margin:20px auto;
+  width: 500px;
+  margin: 20px auto;
 }
 .btns-container :last-child {
-    float: right;
+  float: right;
 }
 </style>
 
@@ -153,86 +152,92 @@
     </div>
 </template>
 <script>
-import draggable from 'vuedraggable'
-import {mapState} from 'vuex'
-import dbService from '../../../../core/dbService'
+import draggable from "vuedraggable";
+import { mapState } from "vuex";
+import dbService from "../../../../core/dbService";
 export default {
-    name: 'SendConfirm',
-    data() {
-        const sharedWallet = JSON.parse(sessionStorage.getItem('sharedWallet'));
-        const payers = sharedWallet.coPayers
-        return {
-            sharedWallet,
-            payers,
-            sponsorPayer:''
-        }
-    },
-    mounted(){
-        this.updateLocalCopayers()
-    },
-    components:{
-        draggable
-    },
-    computed:{
-        ...mapState({
-            transfer: state => state.CurrentWallet.transfer
-        }),
-        localCopayers : {
-            get() {
-                const copayers = this.$store.state.CurrentWallet.localCopayers
-                return copayers.map(c => Object.assign({}, c, {value: c.address, label: c.name}))
-            }
-        }
-    },
-    methods: {
-        updateLocalCopayers() {
-            var that = this;
-                const coPayers = this.sharedWallet.coPayers;
-                const localCopayers = []
-                dbService.wallet.find({}, function (err, accounts) {
-                    if (err) {
-                        console.log(err)
-                        return;
-                    }
-                    for (let cp of coPayers) {
-                        for (let ac of accounts) {
-                            if (cp.address === ac.address) {
-                                localCopayers.push(Object.assign({}, cp, {value:ac.address, label:ac.name}))
-                            }
-                        }
-                    }
-                    if (localCopayers.length > 0) {
-                        that.$store.commit('UPDATE_LOCAL_COPAYERS', {localCopayers})
-                    }
-                })
-        },
-        handleChangeSponsor(value,option) {
-            const payers = []
-            for(let p of this.sharedWallet.coPayers) {
-                if(p.address !== value) {
-                    payers.push(p)
-                } else {
-                    this.sponsorPayer = this.localCopayers.find(item=> item.address === value)
-                }
-            }
-            this.payers = payers;
-        },
-        cancel(){
-            this.$emit('cancelEvent')
-        },
-        back(){
-            this.$emit('sendConfirmBack')
-        },
-        next(){
-            if(this.sponsorPayer) {
-                const coPayers = [];
-                coPayers.push(this.sponsorPayer);
-                coPayers.push(...this.payers);
-                const transfer = { coPayers };
-                this.$store.commit('UPDATE_TRANSFER', { transfer })
-                this.$emit('sendConfirmNext')
-            }
-        }
+  name: "SendConfirm",
+  data() {
+    const sharedWallet = JSON.parse(sessionStorage.getItem("sharedWallet"));
+    const payers = sharedWallet.coPayers;
+    return {
+      sharedWallet,
+      payers,
+      sponsorPayer: ""
+    };
+  },
+  mounted() {
+    this.updateLocalCopayers();
+  },
+  components: {
+    draggable
+  },
+  computed: {
+    ...mapState({
+      transfer: state => state.CurrentWallet.transfer
+    }),
+    localCopayers: {
+      get() {
+        const copayers = this.$store.state.CurrentWallet.localCopayers;
+        return copayers.map(c =>
+          Object.assign({}, c, { value: c.address, label: c.name })
+        );
+      }
     }
-}
+  },
+  methods: {
+    updateLocalCopayers() {
+      var that = this;
+      const coPayers = this.sharedWallet.coPayers;
+      const localCopayers = [];
+      dbService.wallet.find({}, function(err, accounts) {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        for (let cp of coPayers) {
+          for (let ac of accounts) {
+            if (cp.address === ac.address) {
+              localCopayers.push(
+                Object.assign({}, cp, { value: ac.address, label: ac.name })
+              );
+            }
+          }
+        }
+        if (localCopayers.length > 0) {
+          that.$store.commit("UPDATE_LOCAL_COPAYERS", { localCopayers });
+        }
+      });
+    },
+    handleChangeSponsor(value, option) {
+      const payers = [];
+      for (let p of this.sharedWallet.coPayers) {
+        if (p.address !== value) {
+          payers.push(p);
+        } else {
+          this.sponsorPayer = this.localCopayers.find(
+            item => item.address === value
+          );
+        }
+      }
+      this.payers = payers;
+    },
+    cancel() {
+      this.$emit("cancelEvent");
+    },
+    back() {
+      this.$emit("sendConfirmBack");
+    },
+    next() {
+      if (this.sponsorPayer) {
+        const coPayers = [];
+        coPayers.push(this.sponsorPayer);
+        coPayers.push(...this.payers);
+        const transfer = { coPayers };
+        this.$store.commit("UPDATE_TRANSFER", { transfer });
+        this.$emit("sendConfirmNext");
+      }
+    }
+  }
+};
 </script>

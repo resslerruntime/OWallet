@@ -13,6 +13,6 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'fs' {
+declare module "fs" {
   declare module.exports: any;
 }

@@ -24,80 +24,80 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import {legacySignWithLedger} from '../../core/ontLedger'
-  import {TEST_NET, MAIN_NET} from '../../core/consts'
+import { mapState } from "vuex";
+import { legacySignWithLedger } from "../../core/ontLedger";
+import { TEST_NET, MAIN_NET } from "../../core/consts";
 
-  export default {
-    name: 'Home',
-    mounted() {
-      this.$store.dispatch('fetchWalletsFromDb')
-    }
+export default {
+  name: "Home",
+  mounted() {
+    this.$store.dispatch("fetchWalletsFromDb");
   }
+};
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 
-  .row-home {
-    margin-left: -5.13rem;
-  }
+.row-home {
+  margin-left: -5.13rem;
+}
 
-  .row-home .col-10 {
-    padding: 0;
-  }
+.row-home .col-10 {
+  padding: 0;
+}
 
-  .img-home-page {
-    width: 100%;
-    height: 100%;
-  }
+.img-home-page {
+  width: 100%;
+  height: 100%;
+}
 
-  .div-slogan {
-    margin-top: 30vh;
-    text-align:left;
-  }
+.div-slogan {
+  margin-top: 30vh;
+  text-align: left;
+}
 
-  .go-to-wallets {
-    width: 10rem;
-    height: 2.5rem;
-    line-height: 1.8rem;
-    background-color: #196BD8;
-    font-family: AvenirNext-Medium;
-    font-size: 14px;
-    color: #FFFFFF;
-    text-align: center;
-    border-radius: 0;
-    margin-top: 15vh;
-  }
+.go-to-wallets {
+  width: 10rem;
+  height: 2.5rem;
+  line-height: 1.8rem;
+  background-color: #196bd8;
+  font-family: AvenirNext-Medium;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 0;
+  margin-top: 15vh;
+}
 
-  .div-footer-version {
-    text-align: center;
-    position: absolute;
-    bottom:10px;
-  }
-  .div-footer-version P {
-    margin:0;
-  }
-  .home-img {
-    width:100%;
-    height:100%;
-    background:url('../assets/home/background@1.5x.png') center center;
-    background-size:cover;
-  }
-  .home-container {
-    position:fixed;
-    width:100%;
-    height: 100%;
-  }
-  .home-slogan :first-child {
-    font-family: AvenirNext-Medium;
-    font-size: 16px;
-    color: #000000;
-    text-align: left;
-    margin: 0;
-  }
-  .home-slogan :last-child {
-    font-family: AvenirNext-Regular;
-    margin: 0;
-  }
+.div-footer-version {
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+}
+.div-footer-version p {
+  margin: 0;
+}
+.home-img {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/home/background@1.5x.png") center center;
+  background-size: cover;
+}
+.home-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.home-slogan :first-child {
+  font-family: AvenirNext-Medium;
+  font-size: 16px;
+  color: #000000;
+  text-align: left;
+  margin: 0;
+}
+.home-slogan :last-child {
+  font-family: AvenirNext-Regular;
+  margin: 0;
+}
 </style>

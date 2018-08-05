@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'react-tippy' {
+declare module "react-tippy" {
   declare module.exports: any;
 }
 
@@ -22,18 +22,18 @@ declare module 'react-tippy' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'react-tippy/dist/react-tippy' {
+declare module "react-tippy/dist/react-tippy" {
   declare module.exports: any;
 }
 
-declare module 'react-tippy/webpacklib.config' {
+declare module "react-tippy/webpacklib.config" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'react-tippy/dist/react-tippy.js' {
-  declare module.exports: $Exports<'react-tippy/dist/react-tippy'>;
+declare module "react-tippy/dist/react-tippy.js" {
+  declare module.exports: $Exports<"react-tippy/dist/react-tippy">;
 }
-declare module 'react-tippy/webpacklib.config.js' {
-  declare module.exports: $Exports<'react-tippy/webpacklib.config'>;
+declare module "react-tippy/webpacklib.config.js" {
+  declare module.exports: $Exports<"react-tippy/webpacklib.config">;
 }

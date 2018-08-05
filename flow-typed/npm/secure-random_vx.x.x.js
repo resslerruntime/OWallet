@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'secure-random' {
+declare module "secure-random" {
   declare module.exports: any;
 }
 
@@ -22,11 +22,11 @@ declare module 'secure-random' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'secure-random/lib/secure-random' {
+declare module "secure-random/lib/secure-random" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'secure-random/lib/secure-random.js' {
-  declare module.exports: $Exports<'secure-random/lib/secure-random'>;
+declare module "secure-random/lib/secure-random.js" {
+  declare module.exports: $Exports<"secure-random/lib/secure-random">;
 }

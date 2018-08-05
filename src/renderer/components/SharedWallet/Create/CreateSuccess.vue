@@ -13,35 +13,34 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
-    name:'CreateSuccess',
-    computed: {
-        ...mapState({
-            label: state => state.CreateSharedWallet.label,
-            address: state => state.CreateSharedWallet.address
-        })
-    },
-    methods:{
-        next() {
-            this.$router.push({name:'Dashboard'})
-        }
+  name: "CreateSuccess",
+  computed: {
+    ...mapState({
+      label: state => state.CreateSharedWallet.label,
+      address: state => state.CreateSharedWallet.address
+    })
+  },
+  methods: {
+    next() {
+      this.$router.push({ name: "Dashboard" });
     }
-}
+  }
+};
 </script>
 
 <style scoped>
 .content {
-    border: 1px solid #dddddd;
-    padding: 10px;
+  border: 1px solid #dddddd;
+  padding: 10px;
 }
 .content p {
-    margin-top:10px;
+  margin-top: 10px;
 }
 
 .btns {
-    float: right;
-    margin-top:20px;
+  float: right;
+  margin-top: 20px;
 }
 </style>
-

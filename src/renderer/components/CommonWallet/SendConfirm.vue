@@ -1,123 +1,121 @@
 <style scoped>
 .confirm-container {
-
 }
 .drag-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 .label-container {
-    position: relative;
+  position: relative;
 }
 .label {
-    font-weight: bold;
-    font-family: 'AvenirNext-Bold';
-    color: #5E6369;
-    font-size:1.25rem;
-    margin:0;
+  font-weight: bold;
+  font-family: "AvenirNext-Bold";
+  color: #5e6369;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .asset-table {
-    padding: 5px 50px;
+  padding: 5px 50px;
 }
 .asset-item {
-    border-bottom: 1px solid #dddddd;
-    padding:10px 20px;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
 }
 .asset-item span {
-    width: 30%;
-    display: inline-block;
-    text-align: left;
+  width: 30%;
+  display: inline-block;
+  text-align: left;
 }
 .asset-item :nth-child(2) {
-    width:69%;
-    display: inline-block;
-    text-align: right
+  width: 69%;
+  display: inline-block;
+  text-align: right;
 }
 .select-sponsor {
-    margin-left: 20px;
-    width:80%;
-    margin-bottom:15px;
+  margin-left: 20px;
+  width: 80%;
+  margin-bottom: 15px;
 }
 .circle {
-    display: inline-block;
-    text-align: center;
-    border:1px solid #dddddd;
-    border-radius:50%;
-    width:1.5rem;
-    height:1.5rem;
-    line-height: 1.5rem;
-    background:#FBE45A;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background: #fbe45a;
 }
 .confirm-btns {
-    position: fixed;
-    bottom: 0;
-    left: 4rem;
-    height:5.3rem;
-    width:calc(100% - 4rem);
-    z-index: 1000;
-    box-shadow: 0 -1px 6px 0 #F2F2F2;
-    background:#ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 4rem;
+  height: 5.3rem;
+  width: calc(100% - 4rem);
+  z-index: 1000;
+  box-shadow: 0 -1px 6px 0 #f2f2f2;
+  background: #ffffff;
 }
 .fee {
-    padding-left: 20px;
-    padding-top:10px;
-    margin-bottom:50px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-bottom: 50px;
 }
 .sponsor-select {
-    padding-left: 4rem;
+  padding-left: 4rem;
 }
 .sponsor-label {
-    margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .sponsor-label :last-child {
-    float: right;
+  float: right;
 }
 .drag-container {
-    margin-top: 20px;
-    padding-left: 4rem;
+  margin-top: 20px;
+  padding-left: 4rem;
 }
 .payer-item {
-    height: 30px;
+  height: 30px;
 }
 .payer-item:hover {
-    background: #F5F7FB;
+  background: #f5f7fb;
 }
 .payer-item:hover span {
-    color: #196BD8 !important;
+  color: #196bd8 !important;
 }
 .payer-item :nth-child(2) {
-    margin-left: 14px;
+  margin-left: 14px;
 }
 .payer-item :nth-child(3) {
-    float: right;
-    margin-right: 14px;
+  float: right;
+  margin-right: 14px;
 }
 .btns-container {
-    width:500px;
-    margin:20px auto;
+  width: 500px;
+  margin: 20px auto;
 }
 .btns-container :last-child {
-    float: right;
+  float: right;
 }
 
 .label {
-    font-weight: bold;
-    font-family: 'AvenirNext-Bold';
-    color: #5E6369;
-    font-size:1.25rem;
-    margin:0;
+  font-weight: bold;
+  font-family: "AvenirNext-Bold";
+  color: #5e6369;
+  font-size: 1.25rem;
+  margin: 0;
 }
 .input-content {
-    padding-left: 4rem;
+  padding-left: 4rem;
 }
 .input-check {
-    margin-top:12px;
-    margin-bottom: 20px;
-    font-family: AvenirNext-Medium;
-    font-size: 14px;
-    color: #000000;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  font-family: AvenirNext-Medium;
+  font-size: 14px;
+  color: #000000;
 }
-
 </style>
 
 <template>
@@ -157,109 +155,134 @@
     </div>
 </template>
 <script>
-import {mapState} from 'vuex'
-import {legacySignWithLedger} from '../../../core/ontLedger'
-import { TEST_NET, MAIN_NET, ONT_CONTRACT, ONT_PASS_NODE, DEFAULT_SCRYPT } from '../../../core/consts'
-import {Crypto, OntAssetTxBuilder, TransactionBuilder} from 'ontology-ts-sdk'
-import axios from 'axios';
+import { mapState } from "vuex";
+import { legacySignWithLedger } from "../../../core/ontLedger";
+import {
+  TEST_NET,
+  MAIN_NET,
+  ONT_CONTRACT,
+  ONT_PASS_NODE,
+  DEFAULT_SCRYPT
+} from "../../../core/consts";
+import { Crypto, OntAssetTxBuilder, TransactionBuilder } from "ontology-ts-sdk";
+import axios from "axios";
 export default {
-    name: 'SendConfirm',
-    data() {
-        const currentWallet = JSON.parse(sessionStorage.getItem('currentWallet'));
-        return {
-            currentWallet,
-            checked:false,
-            password:''
-        
-        }
-    },
-    mounted(){
-    },
+  name: "SendConfirm",
+  data() {
+    const currentWallet = JSON.parse(sessionStorage.getItem("currentWallet"));
+    return {
+      currentWallet,
+      checked: false,
+      password: ""
+    };
+  },
+  mounted() {},
 
-    computed:{
-        ...mapState({
-            transfer: state => state.CurrentWallet.transfer
-        })
+  computed: {
+    ...mapState({
+      transfer: state => state.CurrentWallet.transfer
+    })
+  },
+  methods: {
+    isCommonWallet() {
+      return this.currentWallet.key ? true : false;
     },
-    methods: {
-        isCommonWallet() {
-            return this.currentWallet.key ? true: false;
-        },
-        back(){
-            this.$emit('sendConfirmBack')
-        },
-        onChange(){
-            this.checked = !this.checked;
-        },
-        submit(){
-            if (!this.password || !this.checked) {
-                this.$message.warning('Please confirm and input the password your wallet.')
-                return;
-            }
-            const restClient = new Ont.RestClient(this.nodeUrl);
-            const from = new Ont.Crypto.Address(this.currentWallet.address);
-            const to = new Ont.Crypto.Address(this.transfer.to);
-            const asset = this.transfer.asset;
-            const amount = asset === 'ONT' ? this.transfer.amount : Number(this.transfer.amount) * 1e9;
-            const tx = Ont.OntAssetTxBuilder.makeTransferTx(asset, from, to, amount, '500', '20000');
-            
-            if(this.isCommonWallet()) {
-                const enc = new Crypto.PrivateKey(this.currentWallet.key)
-                let pri;
-                try {
-                    pri = enc.decrypt(this.password, new Crypto.Address(this.currentWallet.address), this.currentWallet.salt, DEFAULT_SCRYPT)
-                }catch(err) {
-                    this.sending = false;
-                    console.log(err);
-                    this.$message.error('Password error')
-                    return;
-                }
-                TransactionBuilder.signTransaction(tx, pri);
-                restClient.sendRawTransaction(tx.serialize()).then(res => {
-                    console.log(res)
-                    if(res.Error === 0) {
-                        this.$message.success('Transaction has been sent successfully!')
-                    } else if(res.Error === -1) {
-                        this.$message.error('No enough ong to pay for the transfer fee.')
-                    } else {
-                        this.$message.error(res.Result)
-                    }
-                    this.$emit('sendConfirmSubmit')
-                })
-            } else {
-                const pk = new Ont.Crypto.PublicKey(this.publicKey);
-                const txSig = new Ont.TxSignature();
-                txSig.M = 1;
-                txSig.pubKeys = [pk];
-                tx.payer = from;
-                const txData = tx.serializeUnsignedData();
-                legacySignWithLedger(txData, this.publicKey).then(res => {
-                // console.log('txSigned: ' + res);
-                    const sign = '01' + res; //ECDSAwithSHA256
-                    txSig.sigData = [sign]
-                    tx.sigs = [txSig];
-                    const txSerialized = tx.serialize();
-                    // console.log('txSerialized: ' + txSerialized);
+    back() {
+      this.$emit("sendConfirmBack");
+    },
+    onChange() {
+      this.checked = !this.checked;
+    },
+    submit() {
+      if (!this.password || !this.checked) {
+        this.$message.warning(
+          "Please confirm and input the password your wallet."
+        );
+        return;
+      }
+      const restClient = new Ont.RestClient(this.nodeUrl);
+      const from = new Ont.Crypto.Address(this.currentWallet.address);
+      const to = new Ont.Crypto.Address(this.transfer.to);
+      const asset = this.transfer.asset;
+      const amount =
+        asset === "ONT"
+          ? this.transfer.amount
+          : Number(this.transfer.amount) * 1e9;
+      const tx = Ont.OntAssetTxBuilder.makeTransferTx(
+        asset,
+        from,
+        to,
+        amount,
+        "500",
+        "20000"
+      );
 
-                    //send tx
-                    restClient.sendRawTransaction(txSerialized).then(resp => {
-                        console.log('send tx resp: ' + JSON.stringify(resp));
-                        
-                        if(resp.Error === 0) {
-                        alert('Transaction has been sent successfully.')
-                        } else if(res.Error === -1) {
-                            this.$message.error('No enough ong to pay for the transfer fee.')
-                        } else {
-                            alert('Transfer failed. ' + resp.Result)
-                        }
-                        this.$emit('sendConfirmSubmit')
-                    })
-                }, err => {
-                alert(err.message)
-                })
-            }
+      if (this.isCommonWallet()) {
+        const enc = new Crypto.PrivateKey(this.currentWallet.key);
+        let pri;
+        try {
+          pri = enc.decrypt(
+            this.password,
+            new Crypto.Address(this.currentWallet.address),
+            this.currentWallet.salt,
+            DEFAULT_SCRYPT
+          );
+        } catch (err) {
+          this.sending = false;
+          console.log(err);
+          this.$message.error("Password error");
+          return;
         }
-        
+        TransactionBuilder.signTransaction(tx, pri);
+        restClient.sendRawTransaction(tx.serialize()).then(res => {
+          console.log(res);
+          if (res.Error === 0) {
+            this.$message.success("Transaction has been sent successfully!");
+          } else if (res.Error === -1) {
+            this.$message.error("No enough ong to pay for the transfer fee.");
+          } else {
+            this.$message.error(res.Result);
+          }
+          this.$emit("sendConfirmSubmit");
+        });
+      } else {
+        const pk = new Ont.Crypto.PublicKey(this.publicKey);
+        const txSig = new Ont.TxSignature();
+        txSig.M = 1;
+        txSig.pubKeys = [pk];
+        tx.payer = from;
+        const txData = tx.serializeUnsignedData();
+        legacySignWithLedger(txData, this.publicKey).then(
+          res => {
+            // console.log('txSigned: ' + res);
+            const sign = "01" + res; //ECDSAwithSHA256
+            txSig.sigData = [sign];
+            tx.sigs = [txSig];
+            const txSerialized = tx.serialize();
+            // console.log('txSerialized: ' + txSerialized);
+
+            //send tx
+            restClient.sendRawTransaction(txSerialized).then(resp => {
+              console.log("send tx resp: " + JSON.stringify(resp));
+
+              if (resp.Error === 0) {
+                alert("Transaction has been sent successfully.");
+              } else if (res.Error === -1) {
+                this.$message.error(
+                  "No enough ong to pay for the transfer fee."
+                );
+              } else {
+                alert("Transfer failed. " + resp.Result);
+              }
+              this.$emit("sendConfirmSubmit");
+            });
+          },
+          err => {
+            alert(err.message);
+          }
+        );
+      }
     }
-}
+  }
+};
 </script>

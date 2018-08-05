@@ -1,110 +1,109 @@
 <style scoped>
 .confirm-container {
-    height: 400px;
-    padding-bottom: 20px;
-    overflow:scroll;
+  height: 400px;
+  padding-bottom: 20px;
+  overflow: scroll;
 }
 
 .label-container {
-    position: relative;
+  position: relative;
 }
 .label {
-    font-weight: bold;
-    font-family: 'AvenirNext-Bold';
-    color: #5E6369;
-    font-size:1.25rem;
-    margin:0;
+  font-weight: bold;
+  font-family: "AvenirNext-Bold";
+  color: #5e6369;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .asset-table {
-    padding: 5px 50px;
+  padding: 5px 50px;
 }
 .asset-item {
-    border-bottom: 1px solid #dddddd;
-    padding:10px 20px;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
 }
 .asset-item span {
-    width: 30%;
-    display: inline-block;
-    text-align: left;
+  width: 30%;
+  display: inline-block;
+  text-align: left;
 }
 .asset-item :nth-child(2) {
-    width:69%;
-    display: inline-block;
-    text-align: right
+  width: 69%;
+  display: inline-block;
+  text-align: right;
 }
 .select-sponsor {
-    margin-left: 20px;
-    width:80%;
-    margin-bottom:15px;
+  margin-left: 20px;
+  width: 80%;
+  margin-bottom: 15px;
 }
 .circle {
-    display: inline-block;
-    text-align: center;
-    border-radius:50%;
-    width:1.5rem;
-    height:1.5rem;
-    line-height: 1.5rem;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .circle-signed {
-    background:#FBE45A;
+  background: #fbe45a;
 }
 .circle-unsigned {
-    background:#F5F7FB;
+  background: #f5f7fb;
 }
 .confirm-btns {
-    position: fixed;
-    bottom: 0;
-    left: 4rem;
-    height:5.3rem;
-    width:calc(100% - 4rem);
-    z-index: 1000;
-    box-shadow: 0 -1px 6px 0 #F2F2F2;
-    background:#ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 4rem;
+  height: 5.3rem;
+  width: calc(100% - 4rem);
+  z-index: 1000;
+  box-shadow: 0 -1px 6px 0 #f2f2f2;
+  background: #ffffff;
 }
 .fee {
-    padding-left: 20px;
-    padding-top:10px;
-    margin-bottom:50px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-bottom: 50px;
 }
 .sponsor-item {
-    padding-left: 4rem;
-    margin-bottom:12px;
+  padding-left: 4rem;
+  margin-bottom: 12px;
 }
 .sponsor-item :nth-child(2) {
-    margin-left: 14px;
+  margin-left: 14px;
 }
 .sponsor-item :nth-child(3) {
-    float: right;
-    margin-right: 14px;
+  float: right;
+  margin-right: 14px;
 }
 .sponsor-label {
-    margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .sponsor-label :last-child {
-    float: right;
+  float: right;
 }
 
 .payer-item {
-    height: 20px;
-    margin-top: 20px;
-    padding-left: 4rem;
+  height: 20px;
+  margin-top: 20px;
+  padding-left: 4rem;
 }
 
 .payer-item :nth-child(2) {
-    margin-left: 14px;
+  margin-left: 14px;
 }
 .payer-item :nth-child(3) {
-    float: right;
-    margin-right: 14px;
+  float: right;
+  margin-right: 14px;
 }
 .btns-container {
-    width:500px;
-    margin:20px auto;
-    text-align: center;
+  width: 500px;
+  margin: 20px auto;
+  text-align: center;
 }
-
 </style>
 
 <template>
@@ -157,79 +156,81 @@
     </div>
 </template>
 <script>
-import {mapState} from 'vuex'
-import dbService from '../../../../core/dbService'
+import { mapState } from "vuex";
+import dbService from "../../../../core/dbService";
 export default {
-    name: 'PendingConfirm',
-    data() {
-        const sharedWallet = JSON.parse(sessionStorage.getItem('sharedWallet'));
-        const payers = sharedWallet.coPayers
-        return {
-            sharedWallet,
-            payers,
-            sponsorPayer:'',
-            showSign:false
-        }
-    },
-    
-    computed:{
-        ...mapState({
-            pendingTx: state => state.CurrentWallet.pendingTx
-        }),
-        gas: {
-            get() {
-                const gasPrice = this.$store.state.CurrentWallet.pendingTx.gasprice
-                const gasLimit = this.$store.state.CurrentWallet.pendingTx.gaslimit
-                const gas = gasPrice * gasLimit / 1e9
-                return gas;
-            }
-        }
-    },
-    mounted() {
-        this.updateShowSign()
-    },
-    methods: {
-        updateShowSign() {
-            var that = this;
-                const nextSigner = this.pendingTx.coPayerSignVOS.find((e)=> e.isSign=== false)
-                if(!nextSigner) {
-                    return;
-                }
-                const localCopayers = []
-                dbService.wallet.find({}, function (err, accounts) {
-                    if (err) {
-                        console.log(err)
-                        return;
-                    }
-                    for (let ac of accounts) {
-                        if (nextSigner.address === ac.address) {
-                            that.$store.commit('UPDATE_CURRENT_SIGNER', {account: ac})
-                            that.showSign = true;
-                            return;
-                        }
-                    }
-                })
-        },
-        handleChangeSponsor(value) {
-            const payers = []
-            for(let p of this.sharedWallet.coPayers) {
-                if(p.address !== value) {
-                    payers.push(p)
-                } else {
-                    this.sponsorPayer = p
-                }
-            }
-            this.payers = payers;
-        },
-        cancel(){
-            this.$emit('cancelEvent')
-        },
-        back(){
-            this.$emit('sendConfirmBack')
-        },
-        next(){
-            this.$emit('signEvent')
-        }
+  name: "PendingConfirm",
+  data() {
+    const sharedWallet = JSON.parse(sessionStorage.getItem("sharedWallet"));
+    const payers = sharedWallet.coPayers;
+    return {
+      sharedWallet,
+      payers,
+      sponsorPayer: "",
+      showSign: false
+    };
+  },
+
+  computed: {
+    ...mapState({
+      pendingTx: state => state.CurrentWallet.pendingTx
+    }),
+    gas: {
+      get() {
+        const gasPrice = this.$store.state.CurrentWallet.pendingTx.gasprice;
+        const gasLimit = this.$store.state.CurrentWallet.pendingTx.gaslimit;
+        const gas = (gasPrice * gasLimit) / 1e9;
+        return gas;
+      }
     }
-}
+  },
+  mounted() {
+    this.updateShowSign();
+  },
+  methods: {
+    updateShowSign() {
+      var that = this;
+      const nextSigner = this.pendingTx.coPayerSignVOS.find(
+        e => e.isSign === false
+      );
+      if (!nextSigner) {
+        return;
+      }
+      const localCopayers = [];
+      dbService.wallet.find({}, function(err, accounts) {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        for (let ac of accounts) {
+          if (nextSigner.address === ac.address) {
+            that.$store.commit("UPDATE_CURRENT_SIGNER", { account: ac });
+            that.showSign = true;
+            return;
+          }
+        }
+      });
+    },
+    handleChangeSponsor(value) {
+      const payers = [];
+      for (let p of this.sharedWallet.coPayers) {
+        if (p.address !== value) {
+          payers.push(p);
+        } else {
+          this.sponsorPayer = p;
+        }
+      }
+      this.payers = payers;
+    },
+    cancel() {
+      this.$emit("cancelEvent");
+    },
+    back() {
+      this.$emit("sendConfirmBack");
+    },
+    next() {
+      this.$emit("signEvent");
+    }
+  }
+};
 </script>

@@ -1,36 +1,35 @@
-import { wallet } from '@cityofzion/neon-js'
-
+import { wallet } from "@cityofzion/neon-js";
 
 const state = {
-    publicKey: '',
-    address: '',
-    isHardwareLogin: true
-}
+  publicKey: "",
+  address: "",
+  isHardwareLogin: true
+};
 
 const mutations = {
-    LOGIN_WITH_LEDGER(state, payload) {
-        state.publicKey = payload.publicKeyEncoded;
-        state.address = payload.address;
-    }
-}
+  LOGIN_WITH_LEDGER(state, payload) {
+    state.publicKey = payload.publicKeyEncoded;
+    state.address = payload.address;
+  }
+};
 
 const actions = {
-    someAsyncTask({ commit }) {
-        // do something async
-        commit('INCREMENT_MAIN_COUNTER')
-    },
-    loginWithLedger({ commit }, pk) {
-        const publicKeyEncoded = wallet.getPublicKeyEncoded(pk);
-        const account = new wallet.Account(publicKeyEncoded);
-        localStorage.setItem('publicKey', publicKeyEncoded);
-        localStorage.setItem('address', account.address);        
-        commit('LOGIN_WITH_LEDGER', {publicKeyEncoded, address: account.address})
-        return true;
-    }
-}
+  someAsyncTask({ commit }) {
+    // do something async
+    commit("INCREMENT_MAIN_COUNTER");
+  },
+  loginWithLedger({ commit }, pk) {
+    const publicKeyEncoded = wallet.getPublicKeyEncoded(pk);
+    const account = new wallet.Account(publicKeyEncoded);
+    localStorage.setItem("publicKey", publicKeyEncoded);
+    localStorage.setItem("address", account.address);
+    commit("LOGIN_WITH_LEDGER", { publicKeyEncoded, address: account.address });
+    return true;
+  }
+};
 
 export default {
-    state,
-    mutations,
-    actions
-}
+  state,
+  mutations,
+  actions
+};

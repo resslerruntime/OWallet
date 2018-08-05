@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'base-x' {
+declare module "base-x" {
   declare module.exports: any;
 }
 
@@ -23,11 +23,10 @@ declare module 'base-x' {
  * needed.
  */
 
-
 // Filename aliases
-declare module 'base-x/index' {
-  declare module.exports: $Exports<'base-x'>;
+declare module "base-x/index" {
+  declare module.exports: $Exports<"base-x">;
 }
-declare module 'base-x/index.js' {
-  declare module.exports: $Exports<'base-x'>;
+declare module "base-x/index.js" {
+  declare module.exports: $Exports<"base-x">;
 }

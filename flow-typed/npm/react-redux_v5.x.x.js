@@ -40,18 +40,18 @@ declare module "react-redux" {
     DP,
     CP
   > extends React$Component<OP> {
-    static defaultProps: DP, // <= workaround for https://github.com/facebook/flow/issues/4644
-    static WrappedComponent: Class<React$Component<CP>>,
-    getWrappedInstance(): React$Component<CP>,
-    props: OP,
-    state: void
+    static defaultProps: DP; // <= workaround for https://github.com/facebook/flow/issues/4644
+    static WrappedComponent: Class<React$Component<CP>>;
+    getWrappedInstance(): React$Component<CP>;
+    props: OP;
+    state: void;
   }
 
   declare class ConnectedComponent<OP, P> extends React$Component<OP> {
-    static WrappedComponent: Class<React$Component<P>>,
-    getWrappedInstance(): React$Component<P>,
-    props: OP,
-    state: void
+    static WrappedComponent: Class<React$Component<P>>;
+    getWrappedInstance(): React$Component<P>;
+    props: OP;
+    state: void;
   }
 
   declare type ConnectedComponentWithDefaultPropsClass<OP, DP, CP> = Class<

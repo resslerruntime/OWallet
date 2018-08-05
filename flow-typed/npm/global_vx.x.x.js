@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'global' {
+declare module "global" {
   declare module.exports: any;
 }
 
@@ -22,32 +22,32 @@ declare module 'global' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'global/console' {
+declare module "global/console" {
   declare module.exports: any;
 }
 
-declare module 'global/document' {
+declare module "global/document" {
   declare module.exports: any;
 }
 
-declare module 'global/process' {
+declare module "global/process" {
   declare module.exports: any;
 }
 
-declare module 'global/window' {
+declare module "global/window" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'global/console.js' {
-  declare module.exports: $Exports<'global/console'>;
+declare module "global/console.js" {
+  declare module.exports: $Exports<"global/console">;
 }
-declare module 'global/document.js' {
-  declare module.exports: $Exports<'global/document'>;
+declare module "global/document.js" {
+  declare module.exports: $Exports<"global/document">;
 }
-declare module 'global/process.js' {
-  declare module.exports: $Exports<'global/process'>;
+declare module "global/process.js" {
+  declare module.exports: $Exports<"global/process">;
 }
-declare module 'global/window.js' {
-  declare module.exports: $Exports<'global/window'>;
+declare module "global/window.js" {
+  declare module.exports: $Exports<"global/window">;
 }

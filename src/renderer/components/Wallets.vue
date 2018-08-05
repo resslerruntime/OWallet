@@ -120,199 +120,199 @@
 </template>
 
 <script>
-  import $ from 'jquery'
-  import {mapState} from 'vuex'
-  import JsonWalletDetails from './JsonWallet/View/Details'
-  import SharedWalletDetails from './SharedWallet/View/Details'
-  import SetPathModal from './Modals/SetPath'
+import $ from "jquery";
+import { mapState } from "vuex";
+import JsonWalletDetails from "./JsonWallet/View/Details";
+import SharedWalletDetails from "./SharedWallet/View/Details";
+import SetPathModal from "./Modals/SetPath";
 
-  export default {
-    name: 'Wallets',
-    data() {
-      const net = localStorage.getItem('net')
-      const network = net === 'TEST_NET' ? 'Test Net' : 'Main Net';
+export default {
+  name: "Wallets",
+  data() {
+    const net = localStorage.getItem("net");
+    const network = net === "TEST_NET" ? "Test Net" : "Main Net";
 
-      return {
-        network: network,
-        viewBtn: false,
+    return {
+      network: network,
+      viewBtn: false
+    };
+  },
+  computed: {
+    ...mapState({
+      normalWallet: state => state.Wallets.NormalWallet,
+      sharedWallet: state => state.Wallets.SharedWallet,
+      hardwareWallet: state => state.Wallets.HardwareWallet
+    })
+  },
+  mounted() {
+    this.$store.dispatch("fetchWalletsFromDb");
+    this.isSetPath();
+  },
+  methods: {
+    isSetPath() {
+      if (localStorage.getItem("isSavePath") !== "true") {
+        $("#setPathModal").modal("show");
       }
     },
-    computed: {
-      ...mapState({
-        normalWallet: state => state.Wallets.NormalWallet,
-        sharedWallet: state => state.Wallets.SharedWallet,
-        hardwareWallet: state => state.Wallets.HardwareWallet
-      })
+    ledgerLogin() {
+      this.$router.push({ name: "LoginLedger" });
     },
-    mounted() {
-      this.$store.dispatch('fetchWalletsFromDb')
-      this.isSetPath()
+    copyAddress(wallet) {
+      this.$copyText(wallet.address);
     },
-    methods: {
-      isSetPath() {
-        if(localStorage.getItem('isSavePath') !== 'true') {
-          $("#setPathModal").modal("show")
-        }
-      },
-      ledgerLogin() {
-        this.$router.push({name: 'LoginLedger'})
-      },
-      copyAddress(wallet) {
-        this.$copyText(wallet.address)
-      },
-      viewAllBtn(bool) {
-        this.viewBtn = bool
-      }
-    },
-    components: {
-      JsonWalletDetails,
-      SharedWalletDetails,
-      SetPathModal
+    viewAllBtn(bool) {
+      this.viewBtn = bool;
     }
+  },
+  components: {
+    JsonWalletDetails,
+    SharedWalletDetails,
+    SetPathModal
   }
+};
 </script>
 
 <style>
-  .nav-item > a {
-    color: #DFE2E9;
-  }
+.nav-item > a {
+  color: #dfe2e9;
+}
 
-  .nav-item > a:hover {
-    color: #196BD8;
-  }
+.nav-item > a:hover {
+  color: #196bd8;
+}
 
-  .wallets-nav-pills .nav-link.active {
-    color: #196BD8;
-    background-color: transparent;
-    border-radius: 0;
-  }
+.wallets-nav-pills .nav-link.active {
+  color: #196bd8;
+  background-color: transparent;
+  border-radius: 0;
+}
 
-  .wallets-nav-pills {
-    line-height: 4rem;
-    font-family: AvenirNext-Medium;
-    font-size: 0.88rem;
-    padding: 0 1.7rem;
-  }
+.wallets-nav-pills {
+  line-height: 4rem;
+  font-family: AvenirNext-Medium;
+  font-size: 0.88rem;
+  padding: 0 1.7rem;
+}
 
-  .nav-link {
-    padding: 0 1.7rem;
-  }
+.nav-link {
+  padding: 0 1.7rem;
+}
 
-  .nav-pills .show > .nav-link {
-    color: #196BD8;
-    background-color: transparent;
-  }
+.nav-pills .show > .nav-link {
+  color: #196bd8;
+  background-color: transparent;
+}
 
-  .center {
-    padding: 1.88rem 3rem;
-  }
+.center {
+  padding: 1.88rem 3rem;
+}
 
-  .normalWallet,
-  .div-create-wallet {
-    width: 21.63rem;
-    height: 13.19rem;
-    margin-right: 3.75rem;
-    margin-bottom: 2.75rem;
-  }
+.normalWallet,
+.div-create-wallet {
+  width: 21.63rem;
+  height: 13.19rem;
+  margin-right: 3.75rem;
+  margin-bottom: 2.75rem;
+}
 
-  .normalWallet {
-    background-color: #F5F7FB;
-    padding-left: 1.25rem;
-    position: relative;
-  }
+.normalWallet {
+  background-color: #f5f7fb;
+  padding-left: 1.25rem;
+  position: relative;
+}
 
-  .normalWallet:hover {
-    cursor: pointer;
-  }
+.normalWallet:hover {
+  cursor: pointer;
+}
 
-  .div-create-wallet {
-    background-color: #F5F7FB;
-    font-family: AvenirNext-Medium;
-    position: relative;
-  }
+.div-create-wallet {
+  background-color: #f5f7fb;
+  font-family: AvenirNext-Medium;
+  position: relative;
+}
 
-  .div-create-wallet-bg-color {
-    background-color: #498FEF;
-  }
+.div-create-wallet-bg-color {
+  background-color: #498fef;
+}
 
-  .img-wallet-create {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -30px;
-    margin-top: -30px;
-  }
+.img-wallet-create {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+}
 
-  .div-create-wallet > div > a {
-    font-size: 0.88rem;
-  }
+.div-create-wallet > div > a {
+  font-size: 0.88rem;
+}
 
-  .btn-create {
-    width: 8.25rem;
-    height: 2.13rem;
-    color: white;
-    border: white solid 1px;
-    border-radius: 0;
-  }
+.btn-create {
+  width: 8.25rem;
+  height: 2.13rem;
+  color: white;
+  border: white solid 1px;
+  border-radius: 0;
+}
 
-  .div-create {
-    padding-top: 3rem;
-    padding-left: 6.48rem;
-  }
+.div-create {
+  padding-top: 3rem;
+  padding-left: 6.48rem;
+}
 
-  .div-join {
-    padding-top: 1.88rem;
-    padding-left: 6.48rem;
-  }
+.div-join {
+  padding-top: 1.88rem;
+  padding-left: 6.48rem;
+}
 
-  /* TODO 以下样式可能需要删除：*/
-  .boxBtns {
-    width: 290px;
-    height: 48px;
-    margin-bottom: 16px;
-    border-radius: 4px;
-    background-color: #edf2f5;
-    text-align: center;
-    line-height: 48px;
-  }
+/* TODO 以下样式可能需要删除：*/
+.boxBtns {
+  width: 290px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  background-color: #edf2f5;
+  text-align: center;
+  line-height: 48px;
+}
 
-  .boxBtns a {
-    font-size: 16px;
-    color: #35bfdf;
-  }
+.boxBtns a {
+  font-size: 16px;
+  color: #35bfdf;
+}
 
-  .ledgerBtn {
-    width: 210px;
-    height: 75.2px;
-    border-radius: 4px;
-    background-color: #edf2f5;
-    margin-left: 40px;
-    position: relative;
-    cursor: pointer;
-  }
+.ledgerBtn {
+  width: 210px;
+  height: 75.2px;
+  border-radius: 4px;
+  background-color: #edf2f5;
+  margin-left: 40px;
+  position: relative;
+  cursor: pointer;
+}
 
-  .ledgerBtnInner {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    border: 0;
-    margin: auto;
-  }
+.ledgerBtnInner {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border: 0;
+  margin: auto;
+}
 
-  .ledgerBtnText1 {
-    font-family: SourceSansPro;
-    font-size: 14px;
-    color: #35bfdf;
-    display: block;
-    margin-top: 12px;
-  }
+.ledgerBtnText1 {
+  font-family: SourceSansPro;
+  font-size: 14px;
+  color: #35bfdf;
+  display: block;
+  margin-top: 12px;
+}
 
-  .ledgerBtnText2 {
-    font-family: SourceSansPro;
-    font-size: 18px;
-    font-weight: bold;
-    color: #35bfdf;
-  }
+.ledgerBtnText2 {
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: bold;
+  color: #35bfdf;
+}
 </style>

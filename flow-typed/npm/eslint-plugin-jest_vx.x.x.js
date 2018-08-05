@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'eslint-plugin-jest' {
+declare module "eslint-plugin-jest" {
   declare module.exports: any;
 }
 
@@ -22,46 +22,54 @@ declare module 'eslint-plugin-jest' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'eslint-plugin-jest/build/index' {
+declare module "eslint-plugin-jest/build/index" {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-jest/build/rules/no_disabled_tests' {
+declare module "eslint-plugin-jest/build/rules/no_disabled_tests" {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-jest/build/rules/no_focused_tests' {
+declare module "eslint-plugin-jest/build/rules/no_focused_tests" {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-jest/build/rules/no_identical_title' {
+declare module "eslint-plugin-jest/build/rules/no_identical_title" {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-jest/build/rules/types' {
+declare module "eslint-plugin-jest/build/rules/types" {
   declare module.exports: any;
 }
 
-declare module 'eslint-plugin-jest/build/rules/valid_expect' {
+declare module "eslint-plugin-jest/build/rules/valid_expect" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'eslint-plugin-jest/build/index.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/index'>;
+declare module "eslint-plugin-jest/build/index.js" {
+  declare module.exports: $Exports<"eslint-plugin-jest/build/index">;
 }
-declare module 'eslint-plugin-jest/build/rules/no_disabled_tests.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/rules/no_disabled_tests'>;
+declare module "eslint-plugin-jest/build/rules/no_disabled_tests.js" {
+  declare module.exports: $Exports<
+    "eslint-plugin-jest/build/rules/no_disabled_tests"
+  >;
 }
-declare module 'eslint-plugin-jest/build/rules/no_focused_tests.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/rules/no_focused_tests'>;
+declare module "eslint-plugin-jest/build/rules/no_focused_tests.js" {
+  declare module.exports: $Exports<
+    "eslint-plugin-jest/build/rules/no_focused_tests"
+  >;
 }
-declare module 'eslint-plugin-jest/build/rules/no_identical_title.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/rules/no_identical_title'>;
+declare module "eslint-plugin-jest/build/rules/no_identical_title.js" {
+  declare module.exports: $Exports<
+    "eslint-plugin-jest/build/rules/no_identical_title"
+  >;
 }
-declare module 'eslint-plugin-jest/build/rules/types.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/rules/types'>;
+declare module "eslint-plugin-jest/build/rules/types.js" {
+  declare module.exports: $Exports<"eslint-plugin-jest/build/rules/types">;
 }
-declare module 'eslint-plugin-jest/build/rules/valid_expect.js' {
-  declare module.exports: $Exports<'eslint-plugin-jest/build/rules/valid_expect'>;
+declare module "eslint-plugin-jest/build/rules/valid_expect.js" {
+  declare module.exports: $Exports<
+    "eslint-plugin-jest/build/rules/valid_expect"
+  >;
 }

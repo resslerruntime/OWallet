@@ -4,10 +4,10 @@
 // TODO import BigInteger from 'bigi'
 // For now, I just copy-paste the definition from there
 
-// ---------- copypasta start ---- 
+// ---------- copypasta start ----
 declare class $npm$bigi$BigInteger {
-  constructor(input: string|Array<number>, base?: number): void;
-  static (input: string|Array<number>, base?: number): $npm$bigi$BigInteger;
+  constructor(input: string | Array<number>, base?: number): void;
+  static (input: string | Array<number>, base?: number): $npm$bigi$BigInteger;
 
   toString(base?: number): string;
   toByteArray(): Array<number>;
@@ -34,10 +34,10 @@ declare class $npm$bigi$BigInteger {
   toHex(): string;
 }
 
-declare module 'bigi' {
+declare module "bigi" {
   declare var exports: typeof $npm$bigi$BigInteger;
 }
-// ---------- copypasta end ---- 
+// ---------- copypasta end ----
 
 declare class $npm$ecurve$Curve {
   p: $npm$bigi$BigInteger;
@@ -71,7 +71,7 @@ declare class $npm$ecurve$Point {
     y: $npm$bigi$BigInteger,
     z: $npm$bigi$BigInteger
   ): void;
-  
+
   x: $npm$bigi$BigInteger;
   y: $npm$bigi$BigInteger;
   z: $npm$bigi$BigInteger;
@@ -80,25 +80,35 @@ declare class $npm$ecurve$Point {
   affineX: $npm$bigi$BigInteger;
   affineY: $npm$bigi$BigInteger;
 
-  static fromAffine(curve: $npm$ecurve$Curve, x: $npm$bigi$BigInteger, y: $npm$bigi$BigInteger): $npm$ecurve$Point;
+  static fromAffine(
+    curve: $npm$ecurve$Curve,
+    x: $npm$bigi$BigInteger,
+    y: $npm$bigi$BigInteger
+  ): $npm$ecurve$Point;
   equals(other: $npm$ecurve$Point): boolean;
   negate(): $npm$ecurve$Point;
   add(other: $npm$ecurve$Point): $npm$ecurve$Point;
   twice(): $npm$ecurve$Point;
   multiply(k: $npm$bigi$BigInteger): $npm$ecurve$Point;
-  multiplyTwo(j: $npm$bigi$BigInteger, x: $npm$ecurve$Point, k: $npm$bigi$BigInteger): $npm$ecurve$Point;
+  multiplyTwo(
+    j: $npm$bigi$BigInteger,
+    x: $npm$ecurve$Point,
+    k: $npm$bigi$BigInteger
+  ): $npm$ecurve$Point;
 
-  static decodeFrom(curve: $npm$ecurve$Curve, buffer: Buffer): $npm$ecurve$Point;
+  static decodeFrom(
+    curve: $npm$ecurve$Curve,
+    buffer: Buffer
+  ): $npm$ecurve$Point;
   getEncoded(compressed: boolean): Buffer;
-  
+
   toString(): string;
 }
 
-declare module 'ecurve' {
-  
+declare module "ecurve" {
   declare var Point: typeof $npm$ecurve$Point;
-  
+
   declare var Curve: typeof $npm$ecurve$Curve;
-  
+
   declare function getCurveByName(name: string): ?Curve;
 }
